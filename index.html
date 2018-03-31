@@ -89,8 +89,9 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
  socket.emit("hunts", document.getElementById('chatContent').innerHTML)
     socket.on("hunts", function(me){
     usrs++
+      //spawn new player
       if(usrs == 1){
-        var player = new Player(usrs, username);
+        socket.emit("player", new Player(usrs, username))
       }
       if(usrs == 2){
         
@@ -106,11 +107,20 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
   document.getElementById('chatContent').innerHTML = gme;
      })
 
-  //broadcst alert messages
+  //broadcast alert messages
    socket.on("broadcast", function(msg){
     alert(msg);
      })
-  
+  //controll spawned player
+     socket.on("player", function(spawn){
+     document.addEventListener("keydown", function(ev){
+       if(ev.which == 32){
+         spawn.position.y += 1
+       }
+     })
+     })  
+          
+          
   // Update messages
   socket.on('chat', function(message, author) {
     
