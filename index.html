@@ -91,8 +91,11 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
       if(usrs == 1){
        // var player = new Player()
        // players.push(player)
-       socket.emit("player", BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene))
+       
       }
+      
+      socket.emit("player", new BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene))
+      
       if(usrs == 2){
          
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
