@@ -45,47 +45,10 @@ function setup() {
    socket.on("ademola", function(gme){
   document.getElementById('chatContent').innerHTML = gme;
      })
-/*  function myFunction() {
-    msgs.push(document.getElementById('chatContent').innerHTML)
-    socket.emit("hunts", msgs)
-}
-document.getElementById("bb").onload = myFunction();
-    socket.on("hunts", function(me){
-//  document.getElementById('waste').innerHTML = me;
-      alert(me)
-     });*/
-  //setInterval(function(){
-  //},10)
-/*socket.on('connect', function() {
- usr.push(score)
-//socket.emit("hunts", usr)
-    socket.on("hunts", function(me){
-    score++
-     usr.push(score)
-   // alert(document.getElementById('chatContent').innerHTML)
-      socket.emit("hunts", document.getElementById('chatContent').innerHTML)
-//   document.getElementById('waste').innerHTML = document.getElementById('chatContent').innerHTML 
-  // var x = usr.slice(-1)[0];
-  //console.log(usr);
- //   msgs.push(document.getElementById('messageInput').value)
-//   var p = String(msgs)
-  // console.log(p)
-    socket.on("hunts", function(me){
-  document.getElementById('waste').innerHTML = me;
-     });
 
-    })
-  
-     if(usr == 2){
-     console.log(usr)
-       //socket.emit("hunts", document.getElementById('chatContent').innerHTML)
-    }
-  })
-
-})*/
   // Uptade messages
     socket.on ('old_messages', function(message){
-            for (var i=1; i<message.length(); i++){
+            for (var i=1; i<message.length; i++){
               alert(message[i]);
               }
           });
@@ -97,21 +60,8 @@ document.getElementById("bb").onload = myFunction();
     if(author == username) format = 'b';
    
    document.getElementById('chatContent').innerHTML += '<p><' + format + '>' + author + '</' + format + '> | ' + message + '</p>';
-   // console.log(document.getElementById('chatContent').innerHTML);
   });
 }
-
-     var lt = []
-function a(){
-  var d=document.getElementById('messageInput').value;
-  var c=console.log("working!!!");
- 
-  return {d:d,c:c}
-}
-
-const {d,c} = a()
-lt.push(d, c)
-
 
 
      
