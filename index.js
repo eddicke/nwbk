@@ -17,6 +17,10 @@ io.on('connection', function(socket) {
  socket.on('ademola', function(gme){
     io.emit('ademola', gme);
   });
+  //broadcast alert messages to all users!
+  socket.on('broadcast', function(msg){
+    io.emit('broadcast', msg);
+  });
  socket.on('hunts', function(me){
     io.emit('hunts', me);
   });
