@@ -66,25 +66,8 @@
             // Our built-in 'ground' shape. Params: name, width, depth, subdivs, scene
             var ground = BABYLON.Mesh.CreateGround("ground1", 6, 6, 2, scene);
         
-            return scene;
-        
-        };
-        
-        var scene = createScene()
-
-        engine.runRenderLoop(function () {
-            scene.render();
-        });
-
-        // Resize
-        window.addEventListener("resize", function () {
-            engine.resize();
-        });
-    </script>
-
-    
-    
-    <script>
+           
+  
      var socket;
       var usr = []
       var score = 0
@@ -143,7 +126,20 @@ function send() {
  document.getElementById('messageInput').value = '';
 }
 
+ return scene;
+        
+        };
+        
+        var scene = createScene()
 
+        engine.runRenderLoop(function () {
+            scene.render();
+        });
+
+        // Resize
+        window.addEventListener("resize", function () {
+            engine.resize();
+        });
     </script>
     </div>
   </body>
