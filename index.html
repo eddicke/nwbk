@@ -4,7 +4,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>chat room</title>
   </head>
-  <body id = "bb" onload="setup();">
     <div class="container">
       <br />
       <h2>socket.io chat room</h2>
@@ -73,7 +72,8 @@
       var score = 0
 var username = window.prompt('Enter a username:', '');
 document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
-function setup() {
+
+          //********************************************************************************THE SERVER-CLIENT SIDE
   socket = io();
  
   var msgs = []
@@ -115,16 +115,10 @@ function setup() {
   });
 }
 
-
+//////////////////**************************************************///
      
    
-function send() {
-  
- socket.emit('chat', document.getElementById('messageInput').value, username);
-  
-  
- document.getElementById('messageInput').value = '';
-}
+
 
  return scene;
         
@@ -140,6 +134,16 @@ function send() {
         window.addEventListener("resize", function () {
             engine.resize();
         });
+      
+      
+      function send() {
+  
+ socket.emit('chat', document.getElementById('messageInput').value, username);
+  
+  
+ document.getElementById('messageInput').value = '';
+}
+      
     </script>
     </div>
   </body>
