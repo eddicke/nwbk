@@ -33,6 +33,13 @@
 
      <canvas id="renderCanvas"></canvas>
     <script>
+           var socket;
+      var usr = []
+      var score = 0
+var username = window.prompt('Enter a username:', '');
+document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
+
+      
         var canvas = document.getElementById("renderCanvas");
         var engine = new BABYLON.Engine(canvas, true);
 
@@ -67,11 +74,6 @@
         
            
   
-     var socket;
-      var usr = []
-      var score = 0
-var username = window.prompt('Enter a username:', '');
-document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
 
           //********************************************************************************THE SERVER-CLIENT SIDE
   socket = io();
