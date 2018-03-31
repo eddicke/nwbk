@@ -88,10 +88,10 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
     usrs++
       //spawn new player
       if(usrs == 1){
-        socket.emit("player", new Player())
+       
       }
       if(usrs == 2){
-        
+         socket.emit("player", new Player())
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", "hello there's another new user")
        
