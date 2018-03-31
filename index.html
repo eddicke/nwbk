@@ -54,7 +54,7 @@ function setup() {
           });
   socket.on('chat', function(message, author) {
     
-    console.log("respect this user");
+    console.log(message+"respect this user");
     
     var format = 'i';
     if(author == username) format = 'b';
