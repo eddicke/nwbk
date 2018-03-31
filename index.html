@@ -37,6 +37,7 @@ function setup() {
       if(usrs == 2){
         
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
+        alert("new user");
   }
       })
     })
@@ -65,11 +66,6 @@ function send() {
   
  socket.emit('chat', document.getElementById('messageInput').value, username);
   
- 
-  
-//socket.emit('chat', document.getElementById('messageInput').value, username);
-  
- //   pm.push(document.getElementById('chatContent').innerHTML)
   
  document.getElementById('messageInput').value = '';
 }
