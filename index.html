@@ -96,6 +96,14 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
       
       socket.emit("player", new BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene))
       
+       //controll spawned player
+     socket.on("player", function(spawn){
+  
+         spawn.position.y = 3
+       
+     })  
+      
+      
       if(usrs == 2){
          
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
@@ -114,12 +122,7 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
    socket.on("broadcast", function(msg){
     alert(msg);
      })
-  //controll spawned player
-     socket.on("player", function(spawn){
-  
-         spawn.position.y = 3
-       
-     })  
+ 
           
           
   // Update messages
