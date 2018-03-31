@@ -63,12 +63,9 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
             // Default intensity is 1. Let's dim the light a small amount
             light.intensity = 0.7;
         
-            var Player = function(xpos, name){
+            var Player = function(){
             
             this.player = BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene);
-  
-            this.player.position.x = xpos;
-              this.player.name = name
               return this.player
             }
         
@@ -91,7 +88,7 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
     usrs++
       //spawn new player
       if(usrs == 1){
-        socket.emit("player", new Player(usrs, username))
+        socket.emit("player", new Player())
       }
       if(usrs == 2){
         
