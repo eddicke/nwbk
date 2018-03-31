@@ -117,8 +117,12 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
    socket.on("broadcast", function(msg){
     alert(msg);
    
-     players[0].position.y = 5;
-     
+   document.addEventListener("keydown", function(ev){
+     if(ev.which == 32){
+       
+     players[0].position.y += 2;
+     }
+   })
               /*      //controll spawned player
      socket.on("player", function(spawn){
   spawn = players[0]
