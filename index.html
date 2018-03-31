@@ -63,11 +63,12 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
             // Default intensity is 1. Let's dim the light a small amount
             light.intensity = 0.7;
         
-            var Player = function(xpos){
+            var Player = function(xpos, name){
             
             this.player = BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene);
   
             this.player.position.x = xpos;
+              this.player.name = name
               return this.player
             }
         
@@ -89,7 +90,7 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
     socket.on("hunts", function(me){
     usrs++
       if(usrs == 1){
-        var player = new Player(usrs);
+        var player = new Player(usrs, username);
       }
       if(usrs == 2){
         
