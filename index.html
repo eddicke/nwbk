@@ -89,9 +89,9 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
     usrs++
       //spawn new player
       if(usrs == 1){
-        var player = new Player()
-        players.push(player)
-       socket.emit("player", players[0])
+       // var player = new Player()
+       // players.push(player)
+       socket.emit("player", BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene))
       }
       if(usrs == 2){
          
