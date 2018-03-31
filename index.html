@@ -37,16 +37,22 @@ function setup() {
       if(usrs == 2){
         
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
-        alert("new user");
+        socket.emit("broadcast", "hello there's another new user")
+       
   }
       })
     })
   
   //new
    socket.on("ademola", function(gme){
- // document.getElementById('chatContent').innerHTML = gme;
+  document.getElementById('chatContent').innerHTML = gme;
      })
 
+  //broadcst alert messages
+   socket.on("broadcast", function(msg){
+    alert(msg);
+     })
+  
   // Update messages
   socket.on('chat', function(message, author) {
     
