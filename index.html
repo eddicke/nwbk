@@ -140,9 +140,10 @@ b.setEnabled(false)
             
              for(var j = 0; j<balls.length; j++){
         balls[spawn].setEnabled(true)
-               socket.emit("newplayer", balls[spawn].position)
+               
      
     }
+            socket.emit("newplayer", balls[spawn].position)
           })
           
           
