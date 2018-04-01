@@ -7,13 +7,11 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 var oldMsg = []
-    
-
-            
+var spawn;    
             
 io.on('connection', function(socket) {
   io.emit("oldMsg", oldMsg);
-  
+   io.broadcast.emit("newplayer", spawn);
   socket.on('chat', function(username, message) {
     console.log('message received, sent by: ' + username + ', content: ' + message);
    // oldMsg.push('message received, sent by: ' + username + ', content: ' + message);
