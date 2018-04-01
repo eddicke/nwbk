@@ -150,7 +150,11 @@ b.setEnabled(false)
           
           
            socket.on("newplayer", function(posx){
+             document.addEventListener("keydown", function(ev){
+              if(ev.which == 32){          
              posx += .4
+              }
+             })
            })
           
           
