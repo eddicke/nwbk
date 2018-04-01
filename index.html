@@ -110,17 +110,21 @@ b.setEnabled(false)
     socket.on("hunts", function(me){
     usrs++
       
-
+    
        //broadcast new user spawned
       if(usrs == 1){
           
          socket.emit("player", Number(username))
         }
       
+      //gain control
+      if(username === username){
+        socket.emit("control", Number(username))
+      }
       if(usrs == 2){
         setTimeout(function(){
           
-       // socket.emit("player", Number(username))
+        socket.emit("player", Number(username))
         }, 2000)
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", username)
@@ -134,7 +138,17 @@ b.setEnabled(false)
     })
 
    
-
+//control spawn
+            socket.on("control", function(player){
+                 for(var j = 0; j<balls.length; j++){
+       
+      document.addEventListener("keydown", function(ev){
+        if(ev.which == 32){
+           balls[player].position.y += 1
+        }
+      })
+               }
+            })
 
           socket.on("player", function(spawn){
             
