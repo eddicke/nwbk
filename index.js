@@ -7,8 +7,20 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 var oldMsg = []
+    
+var Player = function(){
+       this.player = BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene);
+       return this.player
+            }
+            
+            
 io.on('connection', function(socket) {
   io.emit("oldMsg", oldMsg);
+  
+   var currentPlayer = new Player(); //new player made
+ 
+    socket.emit('player', currentPlayer);
+  
   socket.on('chat', function(username, message) {
     console.log('message received, sent by: ' + username + ', content: ' + message);
    // oldMsg.push('message received, sent by: ' + username + ', content: ' + message);
@@ -17,10 +29,7 @@ io.on('connection', function(socket) {
  socket.on('ademola', function(gme){
     io.emit('ademola', gme);
   });
-  //spawn new players
-   socket.on('player', function(spawn){
-    io.emit('player', spawn);
-  });
+
   //broadcast alert messages to all users!
   socket.on('broadcast', function(msg){
     io.emit('broadcast', msg);
