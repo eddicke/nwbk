@@ -148,7 +148,7 @@ var count = 0
             
              document.addEventListener("keydown", function(ev){
               if(ev.which == 32){          
-                if(username === toString(id)){
+                if(username == toString(id)){
              count++
               socket.emit("newplayer", count)
                 }
