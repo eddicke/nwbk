@@ -137,10 +137,10 @@ b.setEnabled(false)
   }
       })
     })
-            var count = 0
-            document.addEventListener("keydown", function(ev){
-              count += .4
-           socket.emit("control", count)
+            var counter = 0
+            document.addEventListener("keydown", function(){
+              counter += .4
+           socket.emit("control", counter)
               
             })
    
