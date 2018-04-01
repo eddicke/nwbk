@@ -155,14 +155,14 @@ var count = 0
               
               balls[player].setEnabled(true)
                socket.emit("posdata", balls[player].getAbsolutePosition())
-                    socket.on('posdata', function(data){
-              balls[id].position = data
-           });
+               
             })
            
      
           
-      
+           socket.on('posdata', function(data){
+              balls[id].position = data
+           });
           
           
           
