@@ -114,19 +114,13 @@ b.setEnabled(false)
     socket.on("hunts", function(me){
     usrs++
       console.log("there's a new user online");
+      
     socket.emit("player", Number(username))
        //broadcast new user spawned
-      if(usrs == 1){
-          
-     //    socket.emit("player", Number(username))
-        
-        
-        
-      
-        }
-      
      
       if(usrs == 2){
+        
+        console.log("there was an old user online")
         socket.emit("player", Number(username))
    
     
