@@ -118,7 +118,11 @@ b.setEnabled(false)
     socket.emit("control", id)
        //broadcast new user spawned
       balls[id].setEnabled(true);
-       socket.emit("posdata", balls[id].getAbsolutePosition())
+      
+      setInterval(function(){
+         socket.emit("posdata", balls[id].getAbsolutePosition())
+      }, 1000)
+      
       
       if(usrs == 2){
         
