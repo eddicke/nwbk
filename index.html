@@ -93,9 +93,9 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
     usrs++
       //spawn new player
   
-      
+      var player = new Player()
 
-           socket.emit("player", new Player())
+           socket.emit("player", player.position)
       
   
 
