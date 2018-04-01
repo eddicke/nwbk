@@ -140,7 +140,7 @@ b.setEnabled(false)
             
              for(var j = 0; j<balls.length; j++){
         balls[spawn].setEnabled(true)
-               socket.emit("newplayer", balls[spawn].position.x)
+               socket.emit("newplayer", balls[spawn].position)
      
     }
           })
@@ -148,13 +148,15 @@ b.setEnabled(false)
           
           
           
-          
+           var count = 0
            socket.on("newplayer", function(posx){
              document.addEventListener("keydown", function(ev){
               if(ev.which == 32){          
-             posx += .4
+             count++
+              posx.addInPlace(new BABYLON.Vector3(count, 0, 0))
               }
              })
+                
            })
           
           
