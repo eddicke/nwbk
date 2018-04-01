@@ -93,11 +93,11 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
       
 
       if(usrs == 1){
-       alert("pioneer") 
+       
       }
       
       if(usrs == 2){
-         
+         alert("not a pioneer") 
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", username)
         var ch = true;
