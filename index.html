@@ -128,12 +128,17 @@ b.setEnabled(false)
     })
   //broadcast new user spawned
      setTimeout(function(){
-    for(var j = 0; j<balls.length; j++){
-        balls[Number(username)].setEnabled(true)
-      socket.broadcast.emit("newplayer", balls[Number(username)].setEnabled(true))
-    }
+         socket.emit("player", Number(username))
+   
 },3000)
 
+          socket.on("player", function(spawn){
+            
+             for(var j = 0; j<balls.length; j++){
+        balls[spawn].setEnabled(true)
+      
+    }
+          })
   //*****************************************************************************************************
    socket.on("ademola", function(gme){
   document.getElementById('chatContent').innerHTML = gme;
