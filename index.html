@@ -39,6 +39,8 @@ var socket;
       var usr = []
       var score = 0
 var username = window.prompt('Enter a username:', '');
+          var id = Number(username);
+          
 document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
 
       
@@ -107,7 +109,7 @@ b.setEnabled(false)
   var players = []
   socket.on('connect', function() {
     var emp;
-
+ socket.emit("bot", id)
  socket.emit("hunts", document.getElementById('chatContent').innerHTML)
     socket.on("hunts", function(me){
     usrs++
@@ -152,13 +154,13 @@ b.setEnabled(false)
           for(var j = 0; j<balls.length; j++){
         balls[Number(username)].position.y = player;
             
-      socket.emit("bot", balls[j].getAbsolutePosition())
+     
     }
       })
               
           socket.on("bot", function(position){
                 for(var j = 0; j<balls.length; j++){
-        balls[j].position.y = position;
+        balls[position].position = balls[position].getAbsolutePosition();
     }
           })
 
