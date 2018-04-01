@@ -123,8 +123,10 @@ b.setEnabled(false)
         
        // console.log("there was an old user online")
         socket.emit("player", id)
+        
+        scene.registerBeforeRender(function(){
          socket.emit("posdata", balls[id].getAbsolutePosition())
-    
+        })
         
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", "there was an old user online")
