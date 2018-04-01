@@ -108,7 +108,7 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", "there's another player online")
        
-           socket.Emitter.emit("player", check())
+           socket.emit("player", new Player())
       
         
   }
@@ -132,10 +132,10 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
 
               //controll spawned player
     
-     /*     socket.on("player", function(spawn){
-alert(spawn)
+   socket.on("player", function(spawn){
+
        console.log(spawn)
-     })*/
+     })
           
   // Update messages
   socket.on('chat', function(message, author) {
