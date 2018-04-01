@@ -39,7 +39,7 @@ var socket;
       var usr = []
       var score = 0
 var username = window.prompt('Enter a username:', '');
-          var id = Number(username);
+          
           
 document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
 
@@ -128,7 +128,7 @@ b.setEnabled(false)
      
       if(usrs == 2){
         socket.emit("player", Number(username))
-     
+     var id = Number(username);
     
         
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
