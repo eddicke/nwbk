@@ -62,12 +62,7 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
         
             // Default intensity is 1. Let's dim the light a small amount
             light.intensity = 0.7;
-        
-            var Player = function(){
-            
-            this.player = BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene);
-              return this.player
-            }
+    
         
             // Our built-in 'ground' shape. Params: name, width, depth, subdivs, scene
             var ground = BABYLON.Mesh.CreateGround("ground1", 6, 6, 2, scene);
@@ -93,10 +88,6 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
     usrs++
       //spawn new player
   
-      var player = new Player()
-
-           socket.emit("player", player.position)
-      
   
 
       
@@ -129,7 +120,7 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
               //controll spawned player
     
    socket.on("player", function(spawn){
-
+    alert(spawn)
        console.log(spawn)
      })
           
