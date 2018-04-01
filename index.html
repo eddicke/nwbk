@@ -104,10 +104,19 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", "there's another player online")
        
+         
+          //controll spawned player
+     socket.on("player", function(spawn){
+
+spawn.position.y = 5
+     })  
+        
   }
       })
     })
   
+            socket.emit("player", players[0])
+          
   //new
    socket.on("ademola", function(gme){
   document.getElementById('chatContent').innerHTML = gme;
@@ -116,27 +125,10 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
   //broadcast alert messages
    socket.on("broadcast", function(msg){
     alert(msg);
-   socket.emit("player", players[0])
-     
-  
-              /*      //controll spawned player
-     socket.on("player", function(spawn){
-  spawn = players[0]
-       
-     })  
-     */
-     })
  
-          //controll spawned player
-     socket.on("player", function(spawn){
+ 
+     })
 
-        document.addEventListener("keydown", function(ev){
-     if(ev.which == 32){
-       
-   spawn.position.y += 2;
-     }
-   })
-     })  
 
           
           
