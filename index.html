@@ -91,24 +91,13 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
     socket.on("hunts", function(me){
     usrs++
       
-      scene.meshes.push(new Player())
-    scene.meshes[scene.meshes.length-1].name = username
-        socket.emit("control",  scene.meshes[scene.meshes.length-1].position.y)
-      console.log("newest player"+usrs)
-      //spawn new player
-    /*  var player = new Player()
-      player.name = username
-      player.position.y = usrs
-      
-      if(scene.meshes[scene.meshes.length-1].name == username){
-          socket.emit("player", scene.meshes[scene.meshes.length-1].position)
-      }
-*/
+
+
       
       if(usrs == 2){
          
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
-        socket.emit("broadcast", "there's another player online")
+        socket.emit("broadcast", username)
         var ch = true;
         
       
@@ -117,23 +106,8 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
       })
     })
   
-           socket.on("control", function(player){
-           document.addEventListener("keydown", function(){
-        
-            player += 1
-           
-          })
-           
-           })
-          
-    /*        //control
-          socket.on("control", function(player){
-      if(player){
-      scene.meshes.push(new Player())
-        
-      }
-          })
-         */ 
+     
+
   //new
    socket.on("ademola", function(gme){
   document.getElementById('chatContent').innerHTML = gme;
@@ -147,11 +121,6 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
      })
 
 
-              //controll spawned player
-    
-   /*socket.on("player", function(spawn){
-    spawn = 4
-     })*/
           
   // Update messages
   socket.on('chat', function(message, author) {
