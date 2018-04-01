@@ -119,7 +119,7 @@ b.setEnabled(false)
        //broadcast new user spawned
       balls[id].setEnabled(true);
    
-         socket.emit("posdata", balls[id].getAbsolutePosition())
+        
     
       
       
@@ -154,6 +154,7 @@ var count = 0
             socket.on("control", function(player){
               
               balls[player].setEnabled(true)
+               socket.emit("posdata", balls[player].getAbsolutePosition())
                     socket.on('posdata', function(data){
               balls[id].position = data
            });
