@@ -113,7 +113,7 @@ b.setEnabled(false)
  socket.emit("hunts", document.getElementById('chatContent').innerHTML)
     socket.on("hunts", function(me){
     usrs++
-      
+      console.log("there's a new user online");
     socket.emit("player", Number(username))
        //broadcast new user spawned
       if(usrs == 1){
