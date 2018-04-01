@@ -92,13 +92,10 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
     socket.on("hunts", function(me){
     usrs++
       //spawn new player
-      if(usrs == 1){
-       var player = new Player()
-       players.push(player)
-     
-      }
+  
       
 
+           socket.emit("player", new Player())
       
   
 
@@ -108,7 +105,6 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", "there's another player online")
        
-           socket.emit("player", new Player())
       
         
   }
