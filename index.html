@@ -118,6 +118,7 @@ b.setEnabled(false)
     socket.emit("control", id)
        //broadcast new user spawned
       balls[id].setEnabled(true);
+       socket.emit("posdata", balls[id].getAbsolutePosition())
       
       if(usrs == 2){
         
@@ -142,7 +143,7 @@ var count = 0
           document.addEventListener("keydown", function(ev){
             if(ev.which == 32){
              balls[id].position.x += .4
-                 socket.emit("posdata", balls[id].getAbsolutePosition())
+                
             }
           })
           
