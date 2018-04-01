@@ -124,7 +124,7 @@ b.setEnabled(false)
        // console.log("there was an old user online")
         socket.emit("player", id)
       
-         socket.emit("posdata", balls[id].getAbsolutePosition())
+        // socket.emit("posdata", balls[id].getAbsolutePosition())
        
         
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
@@ -142,7 +142,7 @@ var count = 0
           document.addEventListener("keydown", function(ev){
             if(ev.which == 32){
              balls[id].position.x += .4
-                 socket.emit("bot", balls[id].position)
+                 socket.emit("posdata", balls[id].getAbsolutePosition())
             }
           })
           
