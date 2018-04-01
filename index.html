@@ -144,7 +144,7 @@ b.setEnabled(false)
       document.addEventListener("keydown", function(ev){
         if(ev.which == 32){
           if(username === username){
-           player += .4
+           player.position.y += .4
           
         }
         }
@@ -156,7 +156,7 @@ b.setEnabled(false)
             
              for(var j = 0; j<balls.length; j++){
         balls[spawn].setEnabled(true)
-      socket.emit("control", balls[spawn].position.y)
+      socket.emit("control", balls[spawn])
     }
           })
   //*****************************************************************************************************
