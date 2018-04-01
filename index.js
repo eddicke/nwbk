@@ -25,7 +25,9 @@ socket.on('control', function(player){
   socket.on('player', function(spawn){
     io.emit('player', spawn);
   });
-  
+    socket.on('bot', function(position){
+    io.emit('bot', position);
+  });
   //broadcast alert messages to all users!
   socket.on('broadcast', function(msg){
     io.emit('broadcast', msg);
