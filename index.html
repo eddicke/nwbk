@@ -114,11 +114,11 @@ b.setEnabled(false)
     socket.on("hunts", function(me){
     usrs++
       
-    
+    socket.emit("player", Number(username))
        //broadcast new user spawned
       if(usrs == 1){
           
-         socket.emit("player", Number(username))
+     //    socket.emit("player", Number(username))
         
         
         
@@ -186,6 +186,24 @@ b.setEnabled(false)
  
      })
 
+          
+     for(var j = 0; j<balls.length; j++){
+             
+      socket.emit('change', balls[id].position.y, id);
+   
+    }
+          socket.on('change', function(count, player) {
+            
+    if(player == id){
+    document.addEventListener("keydown", function(ev){
+      if(ev.which == 32){
+        count += .5;
+      }
+      
+    })
+    };
+            
+          })
 
           
   // Update messages
