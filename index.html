@@ -115,9 +115,10 @@ b.setEnabled(false)
     usrs++
       console.log("there's a new user online");
       
-    socket.emit("player", id)
+    socket.emit("control", id)
        //broadcast new user spawned
-     
+      balls[id].setEnabled(true);
+      
       if(usrs == 2){
         
        // console.log("there was an old user online")
@@ -136,41 +137,14 @@ b.setEnabled(false)
 
               ///////////////////////////************************************************
 var count = 0
-          socket.on("player", function(spawn){
-            
-             for(var j = 0; j<balls.length; j++){
-        balls[spawn].setEnabled(true)
-               
-     
-    }
-          //  console.log("spawned "+balls[spawn])
-           //  console.log("id "+balls[id])
-            
-             document.addEventListener("keydown", function(ev){
-              if(ev.which == 32){          
-           
-             count++
-              socket.emit("newplayer", count)
-         
-              }
-             })
-             socket.emit("posdata", balls[id].position)
-            
-            socket.on("newplayer", function(posx){
-            
-                balls[spawn].position.x = posx
-               //balls[spawn].position.x = posx
-           })
-            socket.on("posdata", function(data){
-              balls[spawn].position = data;
+
+          
+          
+          
+            socket.on("control", function(spawn){
+              
+              balls[spawn].setEnabled(true)
             })
-            
-          })
-          
-          
-          
-          
-           
            
           
           
