@@ -112,13 +112,13 @@ b.setEnabled(false)
       
 
        //broadcast new user spawned
-        setInterval(function(){
+      if(usrs == 1){
           
          socket.emit("player", Number(username))
-        })
+        }
       
       if(usrs == 2){
-       
+        socket.emit("player", Number(username))
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", username)
         
