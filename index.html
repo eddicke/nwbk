@@ -93,7 +93,7 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
       
       scene.meshes.push(new Player())
     scene.meshes[scene.meshes.length-1].name = username
-       
+        socket.emit("control",  scene.meshes[scene.meshes.length-1].position.y)
       console.log("newest player"+usrs)
       //spawn new player
     /*  var player = new Player()
@@ -110,18 +110,18 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", "there's another player online")
         var ch = true;
-         socket.emit("control", ch)
+        
       
         
   }
       })
     })
   
+           socket.on("control", function(player){
            document.addEventListener("keydown", function(){
-          scene.meshes.forEach(function(m){
-            if(m.name === username){
-             m.position.y += 1 
-            }
+        
+            player += 1
+           
           })
            
            })
