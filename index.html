@@ -108,7 +108,7 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", "there's another player online")
        
-           socket.broadcast.emit("player", check())
+           socket.Emitter.emit("player", check())
       
         
   }
