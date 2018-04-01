@@ -117,16 +117,19 @@ b.setEnabled(false)
          socket.emit("player", Number(username))
         }
       
-      //gain control
-      if(username === username){
-        console.log("this is the id"+username)
-        socket.emit("control", Number(username))
-      }
+     
       if(usrs == 2){
         setTimeout(function(){
           
         socket.emit("player", Number(username))
         }, 2000)
+        
+         //gain control
+      if(username === username){
+        console.log("this is the id"+username)
+        socket.emit("control", Number(username))
+      }
+        
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", username)
         
@@ -145,7 +148,7 @@ b.setEnabled(false)
        
       document.addEventListener("keydown", function(ev){
         if(ev.which == 32){
-          // balls[player].position.y += 1
+           balls[player].position.y += 1
         }
       })
                }
@@ -155,12 +158,6 @@ b.setEnabled(false)
             
              for(var j = 0; j<balls.length; j++){
         balls[spawn].setEnabled(true)
-               document.addEventListener("keydown", function(ev){
-        if(ev.which == 32){
-          balls[spawn].position.y += .3
-        }
-                 
-               })
       
     }
           })
