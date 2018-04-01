@@ -148,18 +148,22 @@ var count = 0
             
              document.addEventListener("keydown", function(ev){
               if(ev.which == 32){          
-                if(username == toString(id)){
+           
              count++
               socket.emit("newplayer", count)
-                }
+         
               }
              })
+             socket.emit("posdata", balls[spawn].position)
+            
             socket.on("newplayer", function(posx){
             
                 balls[id].position.x = posx
-              // balls[spawn].position.x = posx
+               balls[spawn].position.x = posx
            })
-            
+            socket.on("posdata", function(data){
+              balls[spawn].position = data;
+            })
             
           })
           
