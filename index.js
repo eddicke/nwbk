@@ -26,6 +26,11 @@ io.on('connection', function(socket) {
  socket.on('ademola', function(gme){
     io.emit('ademola', gme);
   });
+  
+   socket.on('newplayer', function(posx){
+    io.emit('newplayer', posx);
+  });
+  
 socket.on('control', function(player){
     io.emit('control', player);
   });
