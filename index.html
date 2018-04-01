@@ -89,7 +89,11 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
     socket.emit("player", emp)
     socket.on("player", function(spawn){
     spawn = new Player()
-      spawn.position.y =3
+     document.addEventListener("keydown", function(ev){
+     if(ev.which == 32){
+     spawn.position.y += 1
+     }
+     })
      })
     
     
