@@ -123,7 +123,7 @@ b.setEnabled(false)
         
        // console.log("there was an old user online")
         socket.emit("player", id)
-   
+         socket.emit("posdata", balls[id].getAbsolutePosition())
     
         
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
@@ -151,12 +151,11 @@ var count = 0
               balls[player].setEnabled(true)
             })
            
-           socket.on("bot", function(position){
-           //  balls[id].position = position;
-             
-           })
+     
           
-          
+            socket.on('posdata', function(data){
+              balls[id].position = data
+           });
           
           
           
