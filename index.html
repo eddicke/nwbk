@@ -143,7 +143,9 @@ var count = 0
                
      
     }
-            console.log(balls[spawn])
+            console.log("spawned "+balls[spawn])
+             console.log("id "+balls[spawn])
+            
              document.addEventListener("keydown", function(ev){
               if(ev.which == 32){          
              count++
@@ -152,7 +154,7 @@ var count = 0
              })
             socket.on("newplayer", function(posx){
             
-                balls[spawn].position.x = posx
+                balls[id].position.x = posx
            })
             
             
