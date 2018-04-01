@@ -84,7 +84,7 @@ for(var i = 0; i<100; i++){
     ball.position.z = 100*(i/4)
     balls.push(ball)
 }
-
+sphere.dispose()
 balls.forEach(function(b){
 b.setEnabled(false)
 })
@@ -111,18 +111,16 @@ b.setEnabled(false)
     usrs++
       
 
-      if(usrs == 1){
-       
-      }
+       //broadcast new user spawned
+ 
+         socket.emit("player", Number(username))
       
       if(usrs == 2){
        
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", username)
         
-          //broadcast new user spawned
- 
-         socket.emit("player", Number(username))
+       
         
       
         
