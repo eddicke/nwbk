@@ -86,15 +86,8 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
   var players = []
   socket.on('connect', function() {
     var emp;
-    socket.emit("player", emp)
-    socket.on("player", function(spawn){
-    spawn = new Player()
-      spawn.name = username
-
-     
-  
-     })
-    
+ scene.meshes.push(new Player())
+    scene.meshes[scene.meshes.length-1].name = username
     
  socket.emit("hunts", document.getElementById('chatContent').innerHTML)
     socket.on("hunts", function(me){
@@ -121,13 +114,23 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
       })
     })
   
-            //control
+           document.addEventListener("keydown", function(){
+          scene.meshes.forEach(function(m){
+            if(m.name == username){
+             m.position.y += 1 
+            }
+          })
+           
+           })
+          
+    /*        //control
           socket.on("control", function(player){
       if(player){
-        alert("dfdgfgFG")
+      scene.meshes.push(new Player())
+        
       }
           })
-          
+         */ 
   //new
    socket.on("ademola", function(gme){
   document.getElementById('chatContent').innerHTML = gme;
@@ -153,7 +156,7 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
     console.log(message+"respect this user");
     
     var format = 'i';
-    if(author == username) format = 'b';
+    if(author == username) format = 'b', ;
    
    document.getElementById('chatContent').innerHTML += '<p><' + format + '>' + author + '</' + format + '> | ' + message + '</p>';
   });
