@@ -152,7 +152,7 @@ b.setEnabled(false)
           for(var j = 0; j<balls.length; j++){
         balls[Number(username)].position.y = player;
             
-      socket.emit("bot", balls[j].position)
+      socket.emit("bot", balls[j].getAbsolutePosition())
     }
       })
               
