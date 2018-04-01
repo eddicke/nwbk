@@ -39,7 +39,7 @@ var socket;
       var usr = []
       var score = 0
 var username = window.prompt('Enter a username:', '');
-          
+           var id = Number(username);
           
 document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
 
@@ -120,7 +120,7 @@ b.setEnabled(false)
           
          socket.emit("player", Number(username))
         
-         var id = Number(username);
+        
         
       
         }
@@ -152,18 +152,18 @@ b.setEnabled(false)
             socket.on("control", function(player){
     
           for(var j = 0; j<balls.length; j++){
-        balls[Number(username)].position.y = player;
+        balls[2].position.y = player;
             
      
     }
       })
               
-          socket.on("bot", function(position){
+       /*   socket.on("bot", function(position){
                 for(var j = 0; j<balls.length; j++){
-        balls[position].position = balls[position].getAbsolutePosition();
+        balls[2].position = balls[position].getAbsolutePosition();
     }
           })
-
+*/
           socket.on("player", function(spawn){
             
              for(var j = 0; j<balls.length; j++){
