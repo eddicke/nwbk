@@ -91,8 +91,11 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
     usrs++
       //spawn new player
       scene.meshes.push(new Player)
-     // scene.meshes[scene.meshes.length-1].name = username;
-      console.log(username)
+     scene.meshes[scene.meshes.length-1].name = username;
+      
+      if(scene.meshes[scene.meshes.length-1].name == username){
+          socket.emit("player", scene.meshes[scene.meshes.length-1].position)
+      }
 
       
       if(usrs == 2){
@@ -124,8 +127,7 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
               //controll spawned player
     
    socket.on("player", function(spawn){
-    alert(spawn)
-       console.log(spawn)
+    spawn = 4
      })
           
   // Update messages
