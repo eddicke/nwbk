@@ -151,11 +151,16 @@ b.setEnabled(false)
     
           for(var j = 0; j<balls.length; j++){
         balls[Number(username)].position.y = player;
-     
+            
+      socket.emit("bot", balls[j].position)
     }
       })
               
-         
+          socket.on("bot", function(position){
+                for(var j = 0; j<balls.length; j++){
+        balls[j].position.y = position;
+    }
+          })
 
           socket.on("player", function(spawn){
             
