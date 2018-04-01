@@ -138,7 +138,12 @@ b.setEnabled(false)
               ///////////////////////////************************************************
 var count = 0
 
-          
+          document.addEventListener("keydown", function(ev){
+            if(ev.which == 32){
+             balls[id].position.x += .4
+                 socket.emit("bot", balls[id].position)
+            }
+          })
           
           
             socket.on("control", function(player){
@@ -146,7 +151,10 @@ var count = 0
               balls[player].setEnabled(true)
             })
            
-          
+           socket.on("bot", function(position){
+             balls[id].position = position;
+             
+           })
           
           
           
