@@ -112,8 +112,10 @@ b.setEnabled(false)
       
 
        //broadcast new user spawned
- 
+        setInterval(function(){
+          
          socket.emit("player", Number(username))
+        })
       
       if(usrs == 2){
        
