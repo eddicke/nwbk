@@ -117,7 +117,7 @@ b.setEnabled(false)
          socket.emit("player", Number(username))
         
        
-        socket.emit("control", Number(username))
+        
       
         }
       
@@ -125,7 +125,7 @@ b.setEnabled(false)
       if(usrs == 2){
         socket.emit("player", Number(username))
      
-     socket.emit("control", Number(username))
+    
         
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", username)
@@ -141,23 +141,22 @@ b.setEnabled(false)
    
 //control spawn
             socket.on("control", function(player){
-                 for(var j = 0; j<balls.length; j++){
-       
       document.addEventListener("keydown", function(ev){
         if(ev.which == 32){
           if(username === username){
-           balls[player].position.y += 1
-          }
+           player += .4
+          
+        }
         }
       })
-               }
+              
             })
 
           socket.on("player", function(spawn){
             
              for(var j = 0; j<balls.length; j++){
         balls[spawn].setEnabled(true)
-      
+      socket.emit("control", balls[spawn].position.y)
     }
           })
   //*****************************************************************************************************
