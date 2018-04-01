@@ -89,12 +89,7 @@ balls.forEach(function(b){
 b.setEnabled(false)
 })
 
-var username = window.prompt('Enter a username:', '');
-setTimeout(function(){
-    for(var j = 0; j<balls.length; j++){
-        balls[Number(username)].setEnabled(true)
-    }
-},3000)
+
           
 
           //********************************************************************************THE SERVER-CLIENT SIDE
@@ -121,20 +116,25 @@ setTimeout(function(){
       }
       
       if(usrs == 2){
-         alert("not a pioneer") 
+       
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", username)
-        var ch = true;
+
         
       
         
   }
       })
     })
-  
-     
+  //broadcast new user spawned
+     setTimeout(function(){
+    for(var j = 0; j<balls.length; j++){
+        balls[Number(username)].setEnabled(true)
+      socket.emit("newplayer", balls[Number(username)].setEnabled(true))
+    }
+},3000)
 
-  //new
+  //*****************************************************************************************************
    socket.on("ademola", function(gme){
   document.getElementById('chatContent').innerHTML = gme;
      })
