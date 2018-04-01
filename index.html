@@ -120,7 +120,7 @@ b.setEnabled(false)
           
          socket.emit("player", Number(username))
         
-       
+         var id = Number(username);
         
       
         }
@@ -128,7 +128,7 @@ b.setEnabled(false)
      
       if(usrs == 2){
         socket.emit("player", Number(username))
-     var id = Number(username);
+   
     
         
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
