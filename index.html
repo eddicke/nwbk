@@ -135,7 +135,7 @@ b.setEnabled(false)
     })
 
               ///////////////////////////************************************************
-
+var count = 0
           socket.on("player", function(spawn){
             
              for(var j = 0; j<balls.length; j++){
@@ -144,23 +144,25 @@ b.setEnabled(false)
      
     }
             console.log(balls[spawn])
-            socket.emit("newplayer", balls[spawn].position)
+             document.addEventListener("keydown", function(ev){
+              if(ev.which == 32){          
+             count++
+              socket.emit("newplayer", count)
+              }
+             })
+            socket.on("newplayer", function(posx){
+            
+                balls[spawn].position.x = posx
+           })
+            
+            
           })
           
           
           
           
-           var count = 0
-           socket.on("newplayer", function(posx){
-             document.addEventListener("keydown", function(ev){
-              if(ev.which == 32){          
-             count++
-              console.log(posx)
-              posx.addInPlace(new BABYLON.Vector3(count, 0, 0))
-              }
-             })
-                
-           })
+           
+           
           
           
           
