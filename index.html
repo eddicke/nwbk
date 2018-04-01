@@ -90,12 +90,7 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
     socket.on("player", function(spawn){
     spawn = new Player()
       spawn.name = username
-     
-    
-       if(spawn.name === username){
-           socket.emit("control", spawn.position.y)
-       }
-   
+
      
   
      })
@@ -118,7 +113,8 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
          
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", "there's another player online")
-       
+        var ch = true;
+         socket.emit("control", ch)
       
         
   }
@@ -127,12 +123,9 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
   
             //control
           socket.on("control", function(player){
-             document.addEventListener("keydown", function(ev){
-     if(ev.which == 32){
-      player += 1 
-     }
-       
-     })
+      if(player){
+        alert("dfdgfgFG")
+      }
           })
           
   //new
