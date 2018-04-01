@@ -119,6 +119,7 @@ b.setEnabled(false)
       
       //gain control
       if(username === username){
+        console.log("this is the id"+username)
         socket.emit("control", Number(username))
       }
       if(usrs == 2){
