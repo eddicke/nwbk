@@ -16,6 +16,13 @@ io.on('connection', function(socket) {
    // oldMsg.push('message received, sent by: ' + username + ', content: ' + message);
     io.emit('chat', username, message);
   });
+  
+    socket.on('change', function(player, count) {
+  //  console.log('message received, sent by: ' + username + ', content: ' + message);
+   // oldMsg.push('message received, sent by: ' + username + ', content: ' + message);
+    io.emit('change', player, count);
+  });
+  
  socket.on('ademola', function(gme){
     io.emit('ademola', gme);
   });
