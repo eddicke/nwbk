@@ -128,33 +128,15 @@ b.setEnabled(false)
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", "there was an old user online")
         
-       
-        
-      
+
         
   }
       })
     })
-            var counter = 0
-            var num = Number(username);
-            document.addEventListener("keydown", function(){
-              if(username === num.toString()){
-              counter += .4
-           socket.emit("control", counter)
-              }
-            })
-   
-//control spawn
+
+              ///////////////////////////************************************************
           
-            socket.on("control", function(player){
-   
-          for(var j = 0; j<balls.length; j++){
-             
-        balls[id].position.y = player;
-   
-    }
-      })
-              
+          
        /*   socket.on("bot", function(position){
                 for(var j = 0; j<balls.length; j++){
         balls[2].position = balls[position].getAbsolutePosition();
@@ -168,6 +150,18 @@ b.setEnabled(false)
      
     }
           })
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
   //*****************************************************************************************************
    socket.on("ademola", function(gme){
   document.getElementById('chatContent').innerHTML = gme;
@@ -179,25 +173,6 @@ b.setEnabled(false)
  
  
      })
-
-          
-     for(var j = 0; j<balls.length; j++){
-             
-      socket.emit('change', balls[id].position.y, id);
-   
-    }
-          socket.on('change', function(count, player) {
-            
-    if(player == id){
-    document.addEventListener("keydown", function(ev){
-      if(ev.which == 32){
-        count += .5;
-      }
-      
-    })
-    };
-            
-          })
 
           
   // Update messages
