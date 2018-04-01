@@ -78,6 +78,10 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
           //********************************************************************************THE SERVER-CLIENT SIDE
   socket = io();
  
+          function check = {
+           console.log("jdkfldjfdsklvgvgfdgfg"); 
+          }
+          
   var msgs = []
   var pm = []
   var usrs = 0
@@ -104,7 +108,7 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", "there's another player online")
        
-           socket.emit("player", new Player())
+           socket.emit("player", check())
       
         
   }
@@ -127,10 +131,10 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
 
 
               //controll spawned player
-     socket.on("player", function(spawn){
+    /* socket.on("player", function(spawn){
 alert(spawn)
        console.log(spawn)
-     })  
+     })  */
           
   // Update messages
   socket.on('chat', function(message, author) {
