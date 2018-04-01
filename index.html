@@ -86,9 +86,10 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
   var players = []
   socket.on('connect', function() {
     
-      socket.emit("player", new Player())
+      //socket.emit("player", new Player())
     socket.on("player", function(spawn){
-    spawn.position.y = usrs
+    spawn = new Player()
+      spawn.position.y =3
      })
     
     
