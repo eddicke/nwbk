@@ -137,17 +137,20 @@ b.setEnabled(false)
   }
       })
     })
-
+            var count = 0
+            document.addEventListener("keydown", function(ev){
+              count += .4
+           socket.emit("control", count)
+              
+            })
    
 //control spawn
             socket.on("control", function(player){
-      document.addEventListener("keydown", function(ev){
-        if(ev.which == 32){
-          if(username === username){
-           player.position.y += .4
-          
-        }
-        }
+    
+          for(var j = 0; j<balls.length; j++){
+        balls[Number(username)].position.y = player;
+     
+    }
       })
               
             })
@@ -156,7 +159,7 @@ b.setEnabled(false)
             
              for(var j = 0; j<balls.length; j++){
         balls[spawn].setEnabled(true)
-      socket.emit("control", balls[spawn])
+     
     }
           })
   //*****************************************************************************************************
