@@ -31,6 +31,9 @@ io.on('connection', function(socket) {
     io.emit('newplayer', posx);
   });
   
+   socket.on('posdata', function(data){
+    io.emit('posdata', data);
+  });
 socket.on('control', function(player){
     io.emit('control', player);
   });
