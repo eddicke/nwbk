@@ -143,19 +143,20 @@ b.setEnabled(false)
               ///////////////////////////************************************************
 var count = 0
 
-          document.addEventListener("keydown", function(ev){
-            if(ev.which == 32){
-             balls[id].position.x += .4
-                 socket.emit("posdata", balls[id].getAbsolutePosition())
-            }
-          })
+         
           
           
             socket.on("control", function(player){
               
               balls[player].setEnabled(true)
-             socket.emit("posdata", balls[player].getAbsolutePosition())
-               
+             
+              
+                document.addEventListener("keydown", function(ev){
+            if(ev.which == 32){
+             balls[id].position.x += .4
+                 socket.emit("posdata", balls[player].position)
+            }
+          })
             })
            
      
