@@ -142,7 +142,7 @@ b.setEnabled(false)
       })
     })
             var counter = 0
-            var num = 2
+            var num = Number(username);
             document.addEventListener("keydown", function(){
               if(username === num.toString()){
               counter += .4
@@ -156,7 +156,7 @@ b.setEnabled(false)
    
           for(var j = 0; j<balls.length; j++){
              
-        balls[2].position.y = player;
+        balls[Number(username)].position.y = player;
    
     }
       })
