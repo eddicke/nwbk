@@ -67,7 +67,10 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
             // Our built-in 'ground' shape. Params: name, width, depth, subdivs, scene
             var ground = BABYLON.Mesh.CreateGround("ground1", 6, 6, 2, scene);
         
-           
+           var Player = function(){
+       this.player = BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene);
+       return this.player
+            }
   
 
           //********************************************************************************THE SERVER-CLIENT SIDE
@@ -87,8 +90,9 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
     socket.on("hunts", function(me){
     usrs++
       //spawn new player
-  
-  
+      scene.meshes.push(new Player)
+     // scene.meshes[scene.meshes.length-1].name = username;
+      console.log(username)
 
       
       if(usrs == 2){
