@@ -115,14 +115,18 @@ b.setEnabled(false)
       if(usrs == 1){
           
          socket.emit("player", Number(username))
+        
+               //gain control
+      if(username === username){
+        console.log("this is the id"+username)
+        socket.emit("control", Number(username))
+      }
         }
       
      
       if(usrs == 2){
-        setTimeout(function(){
-          
         socket.emit("player", Number(username))
-        }, 2000)
+     
         
          //gain control
       if(username === username){
