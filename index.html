@@ -85,19 +85,25 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
   var usrs = 0
   var players = []
   socket.on('connect', function() {
-// usr.push(score)
+    
+      socket.emit("player", new Player())
+    socket.on("player", function(spawn){
+    spawn.position.y = usrs
+     })
+    
+    
  socket.emit("hunts", document.getElementById('chatContent').innerHTML)
     socket.on("hunts", function(me){
     usrs++
       //spawn new player
-      var player = new Player()
+    /*  var player = new Player()
       player.name = username
       player.position.y = usrs
       
       if(scene.meshes[scene.meshes.length-1].name == username){
           socket.emit("player", scene.meshes[scene.meshes.length-1].position)
       }
-
+*/
       
       if(usrs == 2){
          
