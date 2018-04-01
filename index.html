@@ -91,14 +91,13 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
     spawn = new Player()
       spawn.name = username
      
-     document.addEventListener("keydown", function(ev){
-     if(ev.which == 32){
+    
        if(spawn.name === username){
-           spawn.position.y += 1
+           socket.emit("control", spawn.position.y)
        }
    
      }
-     })
+  
      })
     
     
@@ -126,7 +125,15 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
       })
     })
   
-            
+            //control
+          socket.on("control", function(player){
+             document.addEventListener("keydown", function(ev){
+     if(ev.which == 32){
+      player += 1 
+     }
+       
+     })
+          })
           
   //new
    socket.on("ademola", function(gme){
