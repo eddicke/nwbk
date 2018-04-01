@@ -119,18 +119,19 @@ b.setEnabled(false)
        
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", username)
-
+        
+          //broadcast new user spawned
+ 
+         socket.emit("player", Number(username))
         
       
         
   }
       })
     })
-  //broadcast new user spawned
-     setTimeout(function(){
-         socket.emit("player", Number(username))
+
    
-},3000)
+
 
           socket.on("player", function(spawn){
             
