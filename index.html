@@ -130,7 +130,7 @@ b.setEnabled(false)
      setTimeout(function(){
     for(var j = 0; j<balls.length; j++){
         balls[Number(username)].setEnabled(true)
-      socket.emit("newplayer", balls[Number(username)].setEnabled(true))
+      socket.broadcast.emit("newplayer", balls[Number(username)].setEnabled(true))
     }
 },3000)
 
