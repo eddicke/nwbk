@@ -86,13 +86,15 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
   var players = []
   socket.on('connect', function() {
     var emp;
- scene.meshes.push(new Player())
-    scene.meshes[scene.meshes.length-1].name = username
-    console.log("new player")
+
  socket.emit("hunts", document.getElementById('chatContent').innerHTML)
     socket.on("hunts", function(me){
     usrs++
-       console.log("newest player")
+      
+      scene.meshes.push(new Player())
+    scene.meshes[scene.meshes.length-1].name = username
+       
+      console.log("newest player"+usrs)
       //spawn new player
     /*  var player = new Player()
       player.name = username
