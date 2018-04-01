@@ -90,8 +90,9 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
     socket.on("hunts", function(me){
     usrs++
       //spawn new player
-      scene.meshes.push(new Player)
-     scene.meshes[scene.meshes.length-1].name = username;
+      var player = new Player()
+      player.name = username
+      player.position.y = usrs
       
       if(scene.meshes[scene.meshes.length-1].name == username){
           socket.emit("player", scene.meshes[scene.meshes.length-1].position)
@@ -126,9 +127,9 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
 
               //controll spawned player
     
-   socket.on("player", function(spawn){
+   /*socket.on("player", function(spawn){
     spawn = 4
-     })
+     })*/
           
   // Update messages
   socket.on('chat', function(message, author) {
