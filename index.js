@@ -22,7 +22,9 @@ io.on('connection', function(socket) {
  socket.on('ademola', function(gme){
     io.emit('ademola', gme);
   });
-
+socket.on('control', function(player){
+    io.emit('control', player);
+  });
   socket.on('player', function(spawn){
     io.emit('player', spawn);
   });
