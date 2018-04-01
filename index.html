@@ -1,39 +1,4 @@
-<html>
-  <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>chat room</title>
-  </head>
-    <div class="container">
-      <br />
-      <h2>socket.io chat room</h2>
-      <hr />
-      <div id="chatContent"></div>
-      <div id="waste"></div>
-      <hr />
-      <input id="messageInput" type="text"></input>
-      <button onclick="send();">Send</button>
-      <script src="client.js"></script>
-      <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
-      <script src="https://www.babylonjs.com/hand.minified-1.2.js"></script>
-        <script src="https://preview.babylonjs.com/babylon.js"></script>
-        <script src="https://preview.babylonjs.com/gui/babylon.gui.min.js"></script>
-        <script src="https://preview.babylonjs.com/cannon.js"></script>
-        <script src="https://preview.babylonjs.com/draco_decoder.js" type="text/x-draco-decoder"></script>
-        <script src="https://preview.babylonjs.com/oimo.js"></script>
-
-     <style>
-            #renderCanvas {
-                width: 50%;
-                height: 50%;
-                touch-action: none;
-            }
-        </style>
-
-     <canvas id="renderCanvas"></canvas>
-    <script>
-           var socket;
+var socket;
       var usr = []
       var score = 0
 var username = window.prompt('Enter a username:', '');
@@ -153,7 +118,7 @@ b.setEnabled(false)
     }
       })
               
-            })
+         
 
           socket.on("player", function(spawn){
             
@@ -218,7 +183,3 @@ b.setEnabled(false)
  document.getElementById('messageInput').value = '';
 }
       
-    </script>
-    </div>
-  </body>
-</html>
