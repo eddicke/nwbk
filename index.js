@@ -18,7 +18,7 @@ io.on('connection', function(socket) {
     
     console.log('message received, sent by: ' + username + ', content: ' + message);
    // oldMsg.push('message received, sent by: ' + username + ', content: ' + message);
-    io.broadcast.emit('chat', username, message);
+    socket.broadcast.emit('chat', username, message);
   });
   
     socket.on('change', function(player, count) {
