@@ -153,8 +153,8 @@ var count = 0
               
                 document.addEventListener("keydown", function(ev){
             if(ev.which == 32){
-             balls[id].position.x += .4
-                 socket.emit("posdata", balls[id].position)
+             balls[player].position.x += .4
+                 socket.emit("posdata", balls[player].position)
             }
           })
               
