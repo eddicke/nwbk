@@ -39,6 +39,7 @@ var socket;
       var usr = []
       var score = 0
 var username = window.prompt('Enter a username:', '');
+          var name = username;
            var id = Number(username);
           
 document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
@@ -153,13 +154,15 @@ var count = 0
               
                 document.addEventListener("keydown", function(ev){
             if(ev.which == 32){
+              if(Number(name) == player){
              balls[player].position.x += .4
                  socket.emit("posdata", balls[player].position)
+            }
             }
           })
               
                 socket.on('posdata', function(data){
-              balls[id].position = data
+              balls[player].position = data
            });
             })
            
