@@ -157,22 +157,23 @@ document.addEventListener("keydown", function(ev){
              
             }
             }
+   socket.emit("posdata", balls[id].position)
           })
               
           
             socket.on("control", function(player){
               
               balls[player].setEnabled(true)
-             socket.emit("posdata", balls[player].position)
+            
               
           
                
             })
            
-     /* socket.on('posdata', function(data){
+     socket.on('posdata', function(data){
               balls[id].position = data
            });
-          */
+          
          
           
           
