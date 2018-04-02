@@ -161,7 +161,10 @@ document.addEventListener("keydown", function(ev){
               
               balls[player].setEnabled(true)
              
-              
+               socket.on('posdata', function(data){
+              balls[id].position = data
+           });
+          
                
             })
            
