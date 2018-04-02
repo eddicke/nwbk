@@ -151,12 +151,10 @@ document.addEventListener("keydown", function(ev){
             if(ev.which == 32){
            if(id > 5){
              balls[id].position.x += .4
-                 socket.emit("posdata", balls[id].position)
-            
-            
+              
             }else{
               balls[id].position.x -= .4
-              socket.emit("posdata", balls[id].position)
+             
             }
             }
           })
@@ -165,16 +163,16 @@ document.addEventListener("keydown", function(ev){
             socket.on("control", function(player){
               
               balls[player].setEnabled(true)
-             
-               socket.on('posdata', function(data){
-              balls[id].position = data
-           });
+             socket.emit("posdata", balls[player].position)
+              
           
                
             })
            
-     
-          
+     /* socket.on('posdata', function(data){
+              balls[id].position = data
+           });
+          */
          
           
           
