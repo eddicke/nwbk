@@ -158,18 +158,21 @@ document.addEventListener("keydown", function(ev){
             }
             }
    socket.emit("newplayer", id)
+  
+   socket.emit("posdata", balls[id].getAbsolutePosition())
+  
           })
               
              socket.on('newplayer', function(posx){
               balls[posx].setEnabled(true);
-               socket.emit("posdata", balls[posx].getAbsolutePosition())
-               
+              
+                socket.on('posdata', function(data){
+              balls[posx].position = data
+           });
                
               });
           
-          socket.on('posdata', function(data){
-              balls[id].position = data
-           });
+         
           
             socket.on("control", function(player){
               
