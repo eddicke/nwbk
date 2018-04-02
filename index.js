@@ -11,7 +11,11 @@ var oldMsg = []
             
 io.on('connection', function(socket) {
   io.emit("oldMsg", oldMsg);
+  console.log("New client has connected with id:",socket.id);
+  
   socket.on('chat', function(username, message) {
+     console.log("New player has state:",message);
+    
     console.log('message received, sent by: ' + username + ', content: ' + message);
    // oldMsg.push('message received, sent by: ' + username + ', content: ' + message);
     io.emit('chat', username, message);
