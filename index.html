@@ -146,20 +146,20 @@ var count = 0
 
          
           
-          
+          var xy = 0
 document.addEventListener("keydown", function(ev){
             if(ev.which == 32){
            if(id > 5){
              balls[id].position.x += .4
-              
+              xy += .4
             }else{
               balls[id].position.x -= .4
-             
+              xy -= .4
             }
             }
    socket.emit("newplayer", id)
   
-   socket.emit("posdata", balls[id].getAbsolutePosition())
+   socket.emit("posdata", xy)
   
           })
               
@@ -167,7 +167,7 @@ document.addEventListener("keydown", function(ev){
               balls[posx].setEnabled(true);
               
                 socket.on('posdata', function(data){
-              balls[posx].position = data
+              balls[posx].position.x = data
            });
                
               });
