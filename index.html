@@ -152,14 +152,16 @@ document.addEventListener("keydown", function(ev){
            if(id > 5){
              balls[id].position.x += .4
               xy += .4
+                socket.emit("posdata", xy)
             }else{
               balls[id].position.x -= .4
               xy -= .4
+                 socket.emit("posdata", xy)
             }
             }
    socket.emit("newplayer", id)
   
-   socket.emit("posdata", xy)
+
   
           })
               
