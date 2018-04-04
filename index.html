@@ -127,7 +127,7 @@ b.setEnabled(false)
       if(usrs == 2){
         
        // console.log("there was an old user online")
-        socket.emit("player", id)
+        socket.emit("player", {id: id, pos: balls[id].getAbsolutePosition()})
       
         // socket.emit("posdata", balls[id].getAbsolutePosition())
        
@@ -141,56 +141,11 @@ b.setEnabled(false)
       })
     })
 
+     socket.on("ademola", function(spawn){
+       console.log(spawn)
+     })
               ///////////////////////////************************************************
-var count = 0
 
-         
-          
-          var xy = 0
-document.addEventListener("keydown", function(ev){
-            if(ev.which == 32){
-           if(id > 5){
-             balls[id].position.x += .4
-              xy += .4
-                socket.emit("posdata", xy)
-            }else{
-              balls[id].position.x -= .4
-              xy -= .4
-                 socket.emit("posdata", xy)
-            }
-            }
-   socket.emit("newplayer", id)
-  
-
-  
-          })
-              
-             socket.on('newplayer', function(posx){
-              balls[posx].setEnabled(true);
-              
-              
-               
-              });
-          
-         
-            socket.on('posdata', function(data){
-              balls[id].position.x = data
-           });
-          
-            socket.on("control", function(player){
-              
-              balls[player].setEnabled(true)
-            
-              
-          
-               
-            })
-           
-     
-          
-         
-          
-          
           
   //*****************************************************************************************************
    socket.on("ademola", function(gme){
