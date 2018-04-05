@@ -78,14 +78,20 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
   
            
             // Our built-in 'sphere' shape. Params: name, subdivs, size, scene
-    var sphere = BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene);
+    var sphere = BABYLON.Mesh.CreateSphere("sphere1", 16, 4, scene);
 
     // Move the sphere upward 1/2 its height
     sphere.position.y = 1;
 var balls = []
-for(var i = 0; i<100; i++){
+var mat = new BABYLON.StandardMaterial("mat", scene)
+mat.diffuseColor = new BABYLON.Color3(Math.random()*2, Math.random()*2, Math.random()*2)
+
+
+          var MAXROOM = 100
+for(var i = 0; i<MAXROOM; i++){
     var ball = sphere.createInstance("ball")
     ball.position.z = 100*(i/4)
+  ball.material = mat
     balls.push(ball)
 }
 //sphere.dispose()
