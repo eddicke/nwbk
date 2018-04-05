@@ -124,8 +124,10 @@ b.setEnabled(false)
       
       
       if(usrs == 2){
-         balls[id].setEnabled(true);
+         
        // console.log("there was an old user online")
+        socket.emit("control", id)
+        
         socket.emit("player", {id: id, pos: balls[id].getAbsolutePosition()})
       
         // socket.emit("posdata", balls[id].getAbsolutePosition())
@@ -147,7 +149,9 @@ b.setEnabled(false)
        }
      })
               ///////////////////////////************************************************
-
+socket.on('control', function(player){
+  balls[player].setEnabled(true);
+})
           
   //*****************************************************************************************************
    socket.on("ademola", function(gme){
