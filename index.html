@@ -142,6 +142,9 @@ b.setEnabled(false)
 
      socket.on("player", function(spawn){
        console.log(spawn)
+       if(spawn.id == id){
+        console.log("this is your workplace "+id) 
+       }
      })
               ///////////////////////////************************************************
 
