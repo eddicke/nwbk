@@ -180,7 +180,7 @@ b.setEnabled(false)
               ///////////////////////////************************************************
 socket.on('control', function(player){
   balls[player.id].setEnabled(true);
-  balls[player].position.set(balls[player].getAbsolutePosition());
+  balls[player].position.set(balls[player].position);
   //console.log(player.id+" is already online set at position")
   
   //console.log(player.pos);
