@@ -134,7 +134,7 @@ b.setEnabled(false)
       if(usrs == 2){
          
        // console.log("there was an old user online")
-        socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition()})
+        socket.emit("control", id)
         
         socket.emit("player", {id: id, pos: balls[id].getAbsolutePosition()})
       
@@ -179,7 +179,7 @@ b.setEnabled(false)
           
               ///////////////////////////************************************************
 socket.on('control', function(player){
-  balls[player.id].setEnabled(true);
+  balls[player].setEnabled(true);
 ///  balls[player].position.set(balls[player].getAbsolutePosition());
   //console.log(player.id+" is already online set at position")
   
