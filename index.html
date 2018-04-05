@@ -167,14 +167,20 @@ b.setEnabled(false)
             socket.on('newplayer', function(posx){
     balls[posx.id].position.y += posx.pos;
   });
+          
+          socket.on("player", function(spawn){
+     
+       socket.on('control', function(player){
+  balls[player].position.set(spawn.pos);
+  
+})
+   
+     })
+          
               ///////////////////////////************************************************
 socket.on('control', function(player){
   balls[player].setEnabled(true);
-  socket.on("player", function(spawn){
-     
-       balls[player].position.set(spawn.pos);
-   
-     })
+  
 })
           
   //*****************************************************************************************************
