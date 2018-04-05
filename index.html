@@ -152,9 +152,9 @@ b.setEnabled(false)
 
      socket.on("player", function(spawn){
        console.log(spawn)
-       if(spawn.id == id){
-       
-       }
+     
+       balls[spawn.id].position.set(spawn.pos);
+   
      })
           
            console.log("this is your workplace "+id) 
