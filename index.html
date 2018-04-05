@@ -180,7 +180,11 @@ b.setEnabled(false)
               ///////////////////////////************************************************
 socket.on('control', function(player){
   balls[player.id].setEnabled(true);
+  if(balls[player].position == null){
+    balls[player].position.set(new BABYLON.Vector3.Zero());
+  }else{
   balls[player].position.set(balls[player].position);
+  }
   //console.log(player.id+" is already online set at position")
   
   //console.log(player.pos);
