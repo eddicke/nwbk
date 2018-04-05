@@ -178,13 +178,17 @@ b.setEnabled(false)
      })
           
               ///////////////////////////************************************************
-          var positions = []
+          var pos = []
 socket.on('control', function(player){
   balls[player.id].setEnabled(true);
 
   //console.log(player.id+" is already online set at position")
-  positions.push(player.pos)
-  console.log(positions);
+  pos.push(player.pos)
+    for(var k = 0; k<pos.length; k++){
+        if(balls[player.id].position.equals(pos[k])){
+            balls[player.id].position.copyFrom(pos[k])
+        }
+    }
   
 })
           
