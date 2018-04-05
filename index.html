@@ -138,7 +138,7 @@ b.setEnabled(false)
         
         socket.emit("player", {id: id, pos: balls[id].getAbsolutePosition()})
       
-        // socket.emit("posdata", balls[id].getAbsolutePosition())
+         socket.emit("posdata", balls[id].getAbsolutePosition())
        
         
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
@@ -180,6 +180,7 @@ b.setEnabled(false)
               ///////////////////////////************************************************
 socket.on('control', function(player){
   balls[player].setEnabled(true);
+  balls[player].position.set(balls[player].getAbsolutePosition());
   console.log(player+" is already online")
 })
           
