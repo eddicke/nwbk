@@ -178,12 +178,14 @@ b.setEnabled(false)
      })
           
               ///////////////////////////************************************************
+          var positions = []
 socket.on('control', function(player){
   balls[player.id].setEnabled(true);
 
   //console.log(player.id+" is already online set at position")
+  positions.push(player.pos)
+  console.log(positions);
   
-  console.log(player.pos.length);
 })
           
   //*****************************************************************************************************
