@@ -85,13 +85,13 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
 var balls = []
 var mat = new BABYLON.StandardMaterial("mat", scene)
 mat.diffuseColor = new BABYLON.Color3(Math.random()*2, Math.random()*2, Math.random()*2)
-
+sphere.material = mat
 
           var MAXROOM = 100
 for(var i = 0; i<MAXROOM; i++){
     var ball = sphere.createInstance("ball")
     ball.position.z = 100*(i/4)
-  ball.material = mat
+
     balls.push(ball)
 }
 //sphere.dispose()
