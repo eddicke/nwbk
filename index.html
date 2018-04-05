@@ -145,9 +145,12 @@ b.setEnabled(false)
      socket.on("player", function(spawn){
        console.log(spawn)
        if(spawn.id == id){
-        console.log("this is your workplace "+id) 
+       
        }
      })
+          
+           console.log("this is your workplace "+id) 
+          
               ///////////////////////////************************************************
 socket.on('control', function(player){
   balls[player].setEnabled(true);
