@@ -122,7 +122,7 @@ b.setEnabled(false)
     usrs++
       console.log("there's a new user online");
       
-    socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition()})
+    socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), mat: balls[id].material.clone()})
       
       socket.emit("newplayer", {id: id, pos: amt})
            document.addEventListener("keydown", function(ev){
@@ -140,7 +140,7 @@ b.setEnabled(false)
       if(usrs == 2){
          
        // console.log("there was an old user online")
-        socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition()})
+        socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), mat: balls[id].material.clone()})
         
         socket.emit("player", {id: id, pos: balls[id].getAbsolutePosition()})
       
@@ -188,6 +188,7 @@ b.setEnabled(false)
 socket.on('control', function(player){
   balls[player.id].setEnabled(true);
 balls[player.id].position.copyFrom(player.pos)
+  balls[player.id].material = player.mat
   //console.log(player.id+" is already online set at position")
  // pos.push(player.pos)
   
