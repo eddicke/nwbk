@@ -105,7 +105,8 @@ b.setEnabled(false)
           
   var msgs = []
   var pm = []
-  var usrs = 0
+  var usrs = 0;
+  var amt = 0;
   var players = []
   socket.on('connect', function() {
     var emp;
@@ -116,10 +117,11 @@ b.setEnabled(false)
       console.log("there's a new user online");
       
     socket.emit("control", id)
+      socket.emit("newplayer", {id: id, pos: amt})
        //broadcast new user spawned
       balls[id].setEnabled(true);
    
-        
+         
     
       
       
@@ -151,6 +153,19 @@ b.setEnabled(false)
           
            console.log("this is your workplace "+id) 
           
+          
+          if(id == id){
+           document.addEventListener("keydown", function(ev){
+    if(ev.which == 32){
+        amt +=.05
+    }
+})
+          }
+          
+          
+            socket.on('newplayer', function(posx){
+    balls[posx.id].position.y += posx.pos;
+  });
               ///////////////////////////************************************************
 socket.on('control', function(player){
   balls[player].setEnabled(true);
