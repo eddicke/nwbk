@@ -124,7 +124,7 @@ b.setEnabled(false)
       
       
       if(usrs == 2){
-        
+         balls[id].setEnabled(true);
        // console.log("there was an old user online")
         socket.emit("player", {id: id, pos: balls[id].getAbsolutePosition()})
       
