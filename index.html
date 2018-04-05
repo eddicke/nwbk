@@ -150,12 +150,7 @@ b.setEnabled(false)
       })
     })
 
-     socket.on("player", function(spawn){
-       console.log(spawn)
      
-       balls[spawn.id].position.set(spawn.pos);
-   
-     })
           
            console.log("this is your workplace "+id) 
           
@@ -175,6 +170,11 @@ b.setEnabled(false)
               ///////////////////////////************************************************
 socket.on('control', function(player){
   balls[player].setEnabled(true);
+  socket.on("player", function(spawn){
+     
+       balls[player].position.set(spawn.pos);
+   
+     })
 })
           
   //*****************************************************************************************************
