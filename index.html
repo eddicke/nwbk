@@ -117,7 +117,13 @@ b.setEnabled(false)
       console.log("there's a new user online");
       
     socket.emit("control", id)
+      
       socket.emit("newplayer", {id: id, pos: amt})
+           document.addEventListener("keydown", function(ev){
+    if(ev.which == 32){
+      socket.emit("newplayer", {id: id, pos: amt})
+    }
+           })
        //broadcast new user spawned
       balls[id].setEnabled(true);
    
