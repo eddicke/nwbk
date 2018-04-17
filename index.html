@@ -177,9 +177,9 @@ b.setEnabled(false)
      
           
             socket.on('newplayer', function(posx){
-              setInterval(function(){
+          
     balls[posx.id].position.copyFrom(posx.pos);
-              }, 1000)
+      
   });
           
           socket.on("player", function(spawn){
