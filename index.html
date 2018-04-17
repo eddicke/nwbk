@@ -130,14 +130,15 @@ b.setEnabled(false)
       socket.emit("newplayer", {id: id, pos: amt})
            document.addEventListener("keydown", function(ev){
     if(ev.which == 32){
-      socket.emit("newplayer", {id: id, pos: amt})
+    balls[id].position.y += .05
     }
            })
-       //broadcast new user spawned
       balls[id].setEnabled(true);
    
-         
-    
+      scene.registerBeforeRender(function(){
+        
+           socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
+      })
       
       
       if(usrs == 2){
@@ -174,7 +175,7 @@ b.setEnabled(false)
           
           
             socket.on('newplayer', function(posx){
-    balls[posx.id].position.y += posx.pos;
+    balls[posx.id].position.copyFrom(posx.pos);
   });
           
           socket.on("player", function(spawn){
