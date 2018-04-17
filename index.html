@@ -135,11 +135,21 @@ b.setEnabled(false)
            })
       balls[id].setEnabled(true);
    
-      scene.registerBeforeRender(function(){
-        
-           socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
-      })
+      function update(progress) {
+   socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
+  }
+
+function loop(timestamp) {
+  var progress = timestamp - lastRender
+
+  update(progress)
+  lastRender = timestamp
+  window.requestAnimationFrame(loop)
+}
+var lastRender = 0
+window.requestAnimationFrame(loop)
       
+     
       
       if(usrs == 2){
          
