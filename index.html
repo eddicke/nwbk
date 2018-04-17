@@ -135,8 +135,9 @@ b.setEnabled(false)
            })
       balls[id].setEnabled(true);
    
+      setInterval(function(){
        socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
-
+      }, 1000)
      
       
       if(usrs == 2){
