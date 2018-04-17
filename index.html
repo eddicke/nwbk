@@ -137,7 +137,7 @@ b.setEnabled(false)
    
       setInterval(function(){
        socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
-      }, 500)
+      }, 100)
      
       
       if(usrs == 2){
