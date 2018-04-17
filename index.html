@@ -135,10 +135,7 @@ b.setEnabled(false)
            })
       balls[id].setEnabled(true);
    
-      setInterval(function(){
-   socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
-
-      }, 1000)
+     
 
      
       
@@ -174,6 +171,10 @@ b.setEnabled(false)
 })
           }
           
+           setInterval(function(){
+   socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
+
+      }, 1000)
           
             socket.on('newplayer', function(posx){
     balls[posx.id].position.copyFrom(posx.pos);
