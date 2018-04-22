@@ -34,7 +34,9 @@ io.on('connection', function(socket) {
    socket.on('newplayer', function(posx){
     io.emit('newplayer', posx);
   });
-  
+  socket.on('rotation', function(rot){
+    io.emit('rotation', rot);
+  });
    socket.on('posdata', function(data){
     io.emit('posdata', data);
   });
