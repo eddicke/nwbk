@@ -178,14 +178,12 @@ b.setEnabled(false)
       })
     })
 
-    /* if(id == id){
-	     camera.lockedTarget = balls[id]
-     }*/
+
 		
           
            console.log("this is your workplace "+id)  
 
-          var axY = 0
+ 
 scene.registerBeforeRender(function(){
   if(id == id){
 balls[id].rotation.y = -4.69 - camera.alpha;	
@@ -195,17 +193,15 @@ camera.target.z = parseFloat(balls[id].position.z);
   }
 })
           
-      socket.on('rotation', function(rot){
-balls[rot.id].rotation.copyFrom(rot.axis);
-});
+
      
           
             socket.on('newplayer', function(posx){
-          
- //balls[posx.id].position.copyFrom(posx.pos);
-	
-     // balls[posx.id].position = posx.pos
+         
 		   if(move){
+	socket.on('rotation', function(rot){
+balls[posx.id].rotation.copyFrom(rot.axis);
+});
        balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
 		   }
   });
