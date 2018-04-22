@@ -213,14 +213,14 @@ scene.registerBeforeRender(function(){
           
             socket.on('newplayer', function(posx){
           
-  //  balls[posx.id].position.copyFrom(posx.pos);
+   //balls[posx.id].position.copyFrom(posx.pos);
       
   });
           
           socket.on("player", function(spawn){
      
        socket.on('control', function(player){
- 	balls[player].position.set(spawn.pos);
+ 	//balls[player].position.set(spawn.pos);
   
 })
    
@@ -230,7 +230,7 @@ scene.registerBeforeRender(function(){
           var pos = []
 socket.on('control', function(player){
   balls[player.id].setEnabled(true);
-//balls[player.id].position.copyFrom(player.pos)
+balls[player.id].position.copyFrom(player.pos)
 
   //console.log(player.id+" is already online set at position")
  // pos.push(player.pos)
