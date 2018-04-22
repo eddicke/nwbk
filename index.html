@@ -130,10 +130,11 @@ b.setEnabled(false)
       socket.emit("newplayer", {id: id, pos: amt})
            document.addEventListener("keydown", function(ev){
     if(ev.which == 32){
-    balls[id].position.y += .05
+    balls[id].position.y += .5
+       socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
     }
              
-             socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
+            
            })
       balls[id].setEnabled(true);
    
