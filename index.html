@@ -189,22 +189,22 @@ b.setEnabled(false)
           
            console.log("this is your workplace "+id)  
 
-scene.registerBeforeRender(function(){
+setInterval(function(){
   if(id == id){
  balls[id].rotation.y = -4.69 - camera.alpha;			
 	camera.target.x = parseFloat(balls[id].position.x);		
 	camera.target.z = parseFloat(balls[id].position.z);	
   }
-})
+}, 1000)
           
      
           
             socket.on('newplayer', function(posx){
           
  //balls[posx.id].position.copyFrom(posx.pos);
-		    if(id == id){
+		
       balls[posx.id].position = posx.pos
-		    }
+		  
   });
           
           socket.on("player", function(spawn){
