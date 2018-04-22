@@ -202,7 +202,9 @@ socket.emit("rotation", {id: id, axis: camRot})
          
 		   if(move){
 	socket.on('rotation', function(rot){
+		if(id == posx.id){
 balls[posx.id].rotation.y = rot.axis;
+		}
 });
        balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
 		   }
