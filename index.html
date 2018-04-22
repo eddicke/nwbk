@@ -131,7 +131,8 @@ b.setEnabled(false)
       socket.emit("newplayer", {id: id, pos: amt})
       
     scene.registerBeforeRender(function(){
-	    socket.emit("newplayer", {rotation: balls[id].rotation.clone()})
+	    var rot = balls[id].rotation.clone()
+	    console.log(rot)
     })
     document.addEventListener("keydown", function(ev){
         if(ev.which == 32){
@@ -197,7 +198,7 @@ scene.registerBeforeRender(function(){
             socket.on('newplayer', function(posx){
           
  //balls[posx.id].position.copyFrom(posx.pos);
-		balls[posx.id].rotation.copyFrom(posx.rotation);
+	
      // balls[posx.id].position = posx.pos
 		   if(move){
        balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
