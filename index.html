@@ -202,7 +202,9 @@ scene.registerBeforeRender(function(){
             socket.on('newplayer', function(posx){
           
  //balls[posx.id].position.copyFrom(posx.pos);
+		    if(id == id){
       balls[posx.id].position = posx.pos
+		    }
   });
           
           socket.on("player", function(spawn){
