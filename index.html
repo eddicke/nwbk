@@ -144,23 +144,9 @@ b.setEnabled(false)
        balls[id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
          socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
     }
-	    
-	  			
-	camera.target.x = parseFloat(balls[id].position.x);		
-	camera.target.z = parseFloat(balls[id].position.z);	
+
     })
         socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
-	    
-      /*
-           document.addEventListener("keydown", function(ev){
-    if(ev.which == 32){
-    balls[id].position.z += .5
-       socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
-    }
-             
-            
-           })
-           */
       balls[id].setEnabled(true);
    
     
@@ -189,18 +175,15 @@ b.setEnabled(false)
       })
     })
 
-     
+     if(id == id){
+	     camera.lockedTarget = balls[id]
+     }
           
            console.log("this is your workplace "+id)  
 
 scene.registerBeforeRender(function(){
   if(id == id){
 	  balls[id].rotation.y = -4.69 - camera.alpha;	
-	  
- /*balls[id].rotation.y = -4.69 - camera.alpha;			
-	camera.target.x = parseFloat(balls[id].position.x);		
-	camera.target.z = parseFloat(balls[id].position.z);	
-	*/
   }
 })
           
