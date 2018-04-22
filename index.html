@@ -55,15 +55,14 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
             // This creates a basic Babylon Scene object (non-mesh)
             var scene = new BABYLON.Scene(engine);
         
-            // This creates and positions a free camera (non-mesh)
-            var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 5, -10), scene);
-        
-            // This targets the camera to scene origin
-            camera.setTarget(BABYLON.Vector3.Zero());
-        
-            // This attaches the camera to the canvas
-            camera.attachControl(canvas, true);
-        
+           var camera = new BABYLON.ArcRotateCamera("cameraBaseRotate", -Math.PI/2, Math.PI/2.2, 12, new BABYLON.Vector3(0, 5.0, 0), scene);	
+	          camera.wheelPrecision = 15;	
+	          camera.lowerRadiusLimit = 2;
+	          camera.upperRadiusLimit = 22;
+	          camera.minZ = 0;
+	          camera.minX = 4096;
+	          scene.activeCamera = camera;	
+	          camera.attachControl(canvas);
             // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
             var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
         
@@ -81,7 +80,7 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
   
            
             // Our built-in 'sphere' shape. Params: name, subdivs, size, scene
-    var sphere = BABYLON.Mesh.CreateSphere("sphere1", 16, 4, scene);
+    var sphere = BABYLON.Mesh.CreateBox("sphere1", 3, scene);
 
     // Move the sphere upward 1/2 its height
     sphere.position.y = 1;
@@ -116,7 +115,9 @@ b.setEnabled(false)
   var pm = []
   var usrs = 0;
   var amt = 0;
-  var players = []
+  var players = [];
+  var move = false;
+  var speed = -.05
   socket.on('connect', function() {
     var emp;
  socket.emit("bot", id)
@@ -128,6 +129,22 @@ b.setEnabled(false)
     socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition()})
       
       socket.emit("newplayer", {id: id, pos: amt})
+      
+      
+    document.addEventListener("keydown", function(ev){
+        if(ev.which == 32){
+            move = true
+        }
+         if(ev.which == 40){
+            move = false
+        }
+        if(move){
+       balls[id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
+       socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
+    }
+    })
+      
+      /*
            document.addEventListener("keydown", function(ev){
     if(ev.which == 32){
     balls[id].position.z += .5
@@ -136,6 +153,7 @@ b.setEnabled(false)
              
             
            })
+           */
       balls[id].setEnabled(true);
    
     
@@ -168,7 +186,7 @@ b.setEnabled(false)
           
           
           if(id == id){
-            camera.lockedTarget = balls[id]
+          
            document.addEventListener("keydown", function(ev){
     if(ev.which == 32){
         amt +=.05
@@ -179,6 +197,16 @@ b.setEnabled(false)
            
  
 
+    
+
+scene.registerBeforeRender(function(){
+  if(id == id){
+ balls[id].rotation.y = -4.69 - camera.alpha;			
+	camera.target.x = parseFloat(balls[id].position.x);		
+	camera.target.z = parseFloat(balls[id].position.z);	
+  }
+})
+          
      
           
             socket.on('newplayer', function(posx){
