@@ -183,11 +183,11 @@ b.setEnabled(false)
           
            console.log("this is your workplace "+id)  
 
- 
+ var camRot = 0
 scene.registerBeforeRender(function(){
   if(id == id){
-balls[id].rotation.y = -4.69 - camera.alpha;	
-socket.emit("rotation", {id: id, axis: balls[id].rotation.clone()})
+camRot = -4.69 - camera.alpha;	
+socket.emit("rotation", {id: id, axis: camRot})
 camera.target.x = parseFloat(balls[id].position.x);		
 camera.target.z = parseFloat(balls[id].position.z);
   }
@@ -200,7 +200,7 @@ camera.target.z = parseFloat(balls[id].position.z);
          
 		   if(move){
 	socket.on('rotation', function(rot){
-balls[posx.id].rotation.copyFrom(rot.axis);
+balls[posx.id].rotation.y = rot.axis;
 });
        balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
 		   }
