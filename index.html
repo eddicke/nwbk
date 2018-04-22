@@ -140,7 +140,7 @@ b.setEnabled(false)
         }
         if(move){
        balls[id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
-         socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
+         socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), velocity: speed})
     }
     })
         socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
@@ -214,8 +214,8 @@ scene.registerBeforeRender(function(){
           
             socket.on('newplayer', function(posx){
           
-   balls[posx.id].position.copyFrom(posx.pos);
-      
+ //  balls[posx.id].position.copyFrom(posx.pos);
+       balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, posx.velocity))
   });
           
           socket.on("player", function(spawn){
