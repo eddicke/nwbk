@@ -117,7 +117,7 @@ b.setEnabled(false)
   var amt = 0;
   var players = [];
   var move = false;
-  var speed = -.8
+  var speed = 0
   socket.on('connect', function() {
     var emp;
  socket.emit("bot", id)
@@ -134,9 +134,11 @@ b.setEnabled(false)
     document.addEventListener("keydown", function(ev){
         if(ev.which == 32){
             move = true
+		speed = -.8
         }
          if(ev.which == 40){
             move = false
+		 speed = 0
         }
         if(move){
        balls[id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
