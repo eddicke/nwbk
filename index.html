@@ -188,16 +188,15 @@ b.setEnabled(false)
           var axY = 0
 scene.registerBeforeRender(function(){
   if(id == id){
-//balls[id].rotation.y = -4.69 - camera.alpha;	
-	  axY = -4.69 - camera.alpha;
-socket.emit("rotation", {id: id, y: axY})
+balls[id].rotation.y = -4.69 - camera.alpha;	
+socket.emit("rotation", {id: id, axis: balls[id].rotation.clone()})
 camera.target.x = parseFloat(balls[id].position.x);		
 camera.target.z = parseFloat(balls[id].position.z);
   }
 })
           
       socket.on('rotation', function(rot){
-balls[rot.id].rotation.y = rot.axY;
+balls[rot.id].rotation.copyFrom(rot.axis);
 });
      
           
