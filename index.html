@@ -140,7 +140,7 @@ b.setEnabled(false)
         }
         if(move){
        balls[id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
-       socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
+       
     }
     })
       
@@ -162,7 +162,9 @@ b.setEnabled(false)
      
       
       if(usrs == 2){
-         
+          document.addEventListener("keydown", function(ev){
+		  socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
+	  })
        // console.log("there was an old user online")
         socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition()})
         
