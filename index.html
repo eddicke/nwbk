@@ -141,8 +141,8 @@ b.setEnabled(false)
 		 
         }
         if(move){
-       balls[id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
-         socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
+      // balls[id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
+         socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed})
     }
 
     })
@@ -193,8 +193,10 @@ scene.registerBeforeRender(function(){
           
  //balls[posx.id].position.copyFrom(posx.pos);
 		
-      balls[posx.id].position = posx.pos
-		  
+     // balls[posx.id].position = posx.pos
+		   if(move){
+       balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
+		   }
   });
           
           socket.on("player", function(spawn){
