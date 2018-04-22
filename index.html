@@ -117,7 +117,7 @@ b.setEnabled(false)
   var amt = 0;
   var players = [];
   var move = false;
-  var speed = 0
+  var speed = -.8
   socket.on('connect', function() {
     var emp;
  socket.emit("bot", id)
@@ -134,15 +134,15 @@ b.setEnabled(false)
     document.addEventListener("keydown", function(ev){
         if(ev.which == 32){
             move = true
-		speed = -.8
+		
         }
          if(ev.which == 40){
             move = false
-		 speed = 0
+		 
         }
         if(move){
        balls[id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
-         socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), velocity: speed})
+         socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
     }
     })
         socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition()})
@@ -216,8 +216,8 @@ scene.registerBeforeRender(function(){
           
             socket.on('newplayer', function(posx){
           
- //  balls[posx.id].position.copyFrom(posx.pos);
-       balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, posx.velocity))
+ balls[posx.id].position.copyFrom(posx.pos);
+      
   });
           
           socket.on("player", function(spawn){
