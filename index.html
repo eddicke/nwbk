@@ -175,15 +175,18 @@ b.setEnabled(false)
       })
     })
 
-     if(id == id){
+    /* if(id == id){
 	     camera.lockedTarget = balls[id]
-     }
+     }*/
+		
           
            console.log("this is your workplace "+id)  
 
 scene.registerBeforeRender(function(){
   if(id == id){
 	  balls[id].rotation.y = -4.69 - camera.alpha;	
+	  camera.target.x = parseFloat(balls[id].position.x);		
+	  camera.target.z = parseFloat(balls[id].position.z);
   }
 })
           
