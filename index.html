@@ -130,6 +130,8 @@ b.setEnabled(false)
       
       socket.emit("newplayer", {id: id, pos: amt})
 
+      socket.emit("rotation", {id: id, axis: balls[id].rotation})
+	    
     document.addEventListener("keydown", function(ev){
 	  
         if(ev.which == 32){
@@ -198,13 +200,15 @@ socket.emit("rotation", {id: id, axis: camRot})
 	    
     }, 1000)
           
-            socket.on('newplayer', function(posx){
-         
-		    socket.on('rotation', function(rot){
+		   socket.on('rotation', function(rot){
 		
-balls[posx.id].rotation.y = rot.axis;
+balls[rot.id].rotation.y = rot.axis;
 	
 });
+		
+            socket.on('newplayer', function(posx){
+         
+		 
 		   if(move){
 	
        balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
