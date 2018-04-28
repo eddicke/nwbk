@@ -129,11 +129,7 @@ b.setEnabled(false)
     socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition()})
       
       socket.emit("newplayer", {id: id, pos: amt})
-      
-    scene.registerBeforeRender(function(){
-	    var rot = balls[id].rotation.clone()
-	    console.log(rot)
-    })
+
     document.addEventListener("keydown", function(ev){
         if(ev.which == 32){
             move = true
@@ -189,23 +185,25 @@ scene.registerBeforeRender(function(){
 
 camera.target.x = parseFloat(balls[id].position.x);		
 camera.target.z = parseFloat(balls[id].position.z);
+	  camRot = -4.69 - camera.alpha;	
+socket.emit("rotation", {id: id, axis: camRot})
   }
 })
           
 
     setInterval(function(){
-	    camRot = -4.69 - camera.alpha;	
-socket.emit("rotation", {id: id, axis: camRot})
+	    
     }, 1000)
           
             socket.on('newplayer', function(posx){
          
-		   if(move){
-	socket.on('rotation', function(rot){
+		    socket.on('rotation', function(rot){
 		
 balls[posx.id].rotation.y = rot.axis;
 	
 });
+		   if(move){
+	
        balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
 		   }
   });
