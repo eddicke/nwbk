@@ -143,11 +143,11 @@ b.setEnabled(false)
 		 
         }
 	    
-        if(move){
+       // if(move){
       
          socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed})
 		
-    }
+   // }
 	   
     })
         socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation})
@@ -207,9 +207,9 @@ balls[rot.id].rotation.y = rot.axis;
 });
 		
             socket.on('newplayer', function(posx){
-	
+	if(move){
        balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
-		   
+	}
   });
           
           socket.on("player", function(spawn){
