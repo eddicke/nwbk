@@ -142,10 +142,9 @@ b.setEnabled(false)
         }
 	    
         if(move){
-      // balls[id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
-		if(id == id){
+      
          socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed})
-		}
+		
     }
 	   
     })
