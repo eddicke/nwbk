@@ -161,7 +161,24 @@ b.setEnabled(false)
       if(usrs == 2){
           
 		
-	
+	  document.addEventListener("keydown", function(ev){
+	  
+        if(ev.which == 32){
+            move = true
+		
+        }
+         if(ev.which == 40){
+            move = false
+		 
+        }
+	    
+        if(move){
+      
+         socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed})
+		
+    }
+	   
+    })
        // console.log("there was an old user online")
         socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation})
         
