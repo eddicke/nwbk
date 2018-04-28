@@ -131,6 +131,7 @@ b.setEnabled(false)
       socket.emit("newplayer", {id: id, pos: amt})
 
     document.addEventListener("keydown", function(ev){
+	    if(id == id){
         if(ev.which == 32){
             move = true
 		
@@ -143,7 +144,7 @@ b.setEnabled(false)
       // balls[id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
          socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed})
     }
-
+	    }
     })
         socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation})
       balls[id].setEnabled(true);
