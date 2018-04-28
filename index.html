@@ -193,10 +193,10 @@ camera.target.z = parseFloat(balls[id].position.z);
 })
           
 
-    scene.onPointerMove = function(){
+    setInterval(function(){
 	    camRot = -4.69 - camera.alpha;	
 socket.emit("rotation", {id: id, axis: camRot})
-    }
+    }, 1000)
           
             socket.on('newplayer', function(posx){
          
