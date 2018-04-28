@@ -203,13 +203,13 @@ b.setEnabled(false)
 
  var camRot = 0
 scene.registerBeforeRender(function(){
-  if(id == id){
+
 
 camera.target.x = parseFloat(balls[id].position.x);		
 camera.target.z = parseFloat(balls[id].position.z);
 	  camRot = -4.69 - camera.alpha;	
 socket.emit("rotation", {id: id, axis: camRot})
-  }
+  
 })
           
 
