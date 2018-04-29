@@ -91,8 +91,6 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
            
 // Our built-in 'sphere' shape. Params: name, subdivs, size, scene
 var sphere = BABYLON.Mesh.CreateBox("sphere1", 3, scene);
-
-// Move the sphere upward 1/2 its height
 sphere.position.y = 1;
 var balls = []
 
@@ -109,7 +107,7 @@ balls.push(ball)
 balls.forEach(function(b){
 b.setEnabled(false)
 })
-
+sphere.dispose()
 
           
 
