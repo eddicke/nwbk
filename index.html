@@ -117,7 +117,7 @@ b.setEnabled(false)
   var amt = 0;
   var players = [];
   var move = false;
-  var speed = -.8
+  var speed = 0
   socket.on('connect', function() {
     var emp;
  socket.emit("bot", id)
@@ -133,7 +133,7 @@ b.setEnabled(false)
       socket.emit("rotation", {id: id, axis: balls[id].rotation})
 	    
     document.addEventListener("keydown", function(ev){
-	  
+	  speed = -.8
         if(ev.which == 32){
             move = true
 		
@@ -150,7 +150,15 @@ b.setEnabled(false)
     }
 	   
     })
-        socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation})
+	    
+	    document.addEventListener("keyup", function(ev){
+	  speed = 0
+ 
+         socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed})
+   
+    })
+	    
+        //socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation})
       balls[id].setEnabled(true);
    
     
@@ -160,7 +168,7 @@ b.setEnabled(false)
       
       if(usrs == 2){
           
-		
+	/*	
 	  document.addEventListener("keydown", function(ev){
 	  
         if(ev.which == 32){
@@ -178,7 +186,7 @@ b.setEnabled(false)
 		
     }
 	   
-    })
+    })*/
        // console.log("there was an old user online")
         socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation})
         
@@ -224,9 +232,9 @@ balls[rot.id].rotation.y = rot.axis;
 });
 		
             socket.on('newplayer', function(posx){
-	if(move){
+
        balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, speed))
-	}
+
   });
           
           socket.on("player", function(spawn){
