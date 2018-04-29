@@ -159,9 +159,8 @@ b.setEnabled(false)
    
     })
       balls[id].setEnabled(true);
-	    if(id == id){
    	balls[id].material.alpha = 0
-	    }
+	  
        
 
      
@@ -240,6 +239,10 @@ balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, posx.speed))
           var pos = []
 socket.on('control', function(player){
   balls[player.id].setEnabled(true);
+	if(id != player.id){
+		balls[id].material.alpha = 0
+	}
+	
 balls[player.id].position.copyFrom(player.pos)
 balls[player.id].rotation.copyFrom(player.rot)
 })
