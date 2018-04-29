@@ -95,12 +95,12 @@ var sphere = BABYLON.Mesh.CreateBox("sphere1", 3, scene);
 // Move the sphere upward 1/2 its height
 sphere.position.y = 1;
 var balls = []
-var mat = new BABYLON.StandardMaterial("mat", scene)
-mat.diffuseColor = new BABYLON.Color3(Math.random()*2, Math.random()*2, Math.random()*2)
 
 
           var MAXROOM = 100
 for(var i = 0; i<MAXROOM; i++){
+var mat = new BABYLON.StandardMaterial("mat", scene)
+mat.diffuseColor = new BABYLON.Color3(Math.random()*2, Math.random()*2, Math.random()*2)
 var ball = sphere.clone("ball")
 ball.material = mat
 ball.position.z = 100*(i/4)
@@ -159,8 +159,7 @@ b.setEnabled(false)
    
     })
       balls[id].setEnabled(true);
-   
-	  
+  	balls[id].material.alpha = 0
        
 
      
@@ -239,7 +238,6 @@ balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, posx.speed))
           var pos = []
 socket.on('control', function(player){
   balls[player.id].setEnabled(true);
-
 balls[player.id].position.copyFrom(player.pos)
 balls[player.id].rotation.copyFrom(player.rot)
 })
