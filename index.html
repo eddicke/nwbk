@@ -69,7 +69,17 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
             // Default intensity is 1. Let's dim the light a small amount
             light.intensity = 0.7;
     
-        
+          // stars
+  var stars = BABYLON.MeshBuilder.CreateBox("stars", {size: 8000, sideOrientation: BABYLON.Mesh.BACKSIDE}, scene);
+  var starMat = new BABYLON.CustomMaterial("stars", scene);
+  var urlStar = "http://jerome.bousquie.fr/BJS/images/stars1.jpg"
+  var texStar = new BABYLON.Texture(urlStar, scene);
+  texStar.uScale = 3;
+  texStar.vScale = 3;
+  starMat.diffuseTexture = texStar;
+  stars.material = starMat;
+  stars.infiniteDistance = true
+		
             // Our built-in 'ground' shape. Params: name, width, depth, subdivs, scene
             var ground = BABYLON.Mesh.CreateGround("ground1", 6, 6, 2, scene);
         
@@ -79,11 +89,11 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
             }
   
            
-            // Our built-in 'sphere' shape. Params: name, subdivs, size, scene
-    var sphere = BABYLON.Mesh.CreateBox("sphere1", 3, scene);
+// Our built-in 'sphere' shape. Params: name, subdivs, size, scene
+var sphere = BABYLON.Mesh.CreateBox("sphere1", 3, scene);
 
-    // Move the sphere upward 1/2 its height
-    sphere.position.y = 1;
+// Move the sphere upward 1/2 its height
+sphere.position.y = 1;
 var balls = []
 var mat = new BABYLON.StandardMaterial("mat", scene)
 mat.diffuseColor = new BABYLON.Color3(Math.random()*2, Math.random()*2, Math.random()*2)
@@ -91,12 +101,10 @@ sphere.material = mat
 
           var MAXROOM = 100
 for(var i = 0; i<MAXROOM; i++){
-    var ball = sphere.createInstance("ball")
-    ball.position.z = 100*(i/4)
-
-    balls.push(ball)
+var ball = sphere.createInstance("ball")
+ball.position.z = 100*(i/4)
+balls.push(ball)
 }
-//sphere.dispose()
 balls.forEach(function(b){
 b.setEnabled(false)
 })
@@ -179,9 +187,9 @@ scene.registerBeforeRender(function(){
 camera.target.x = parseFloat(balls[id].position.x);		
 camera.target.z = parseFloat(balls[id].position.z);
 camRot = -4.69 - camera.alpha;	
-
+socket.emit("rotation", {id: id, axis: camRot})
 })
- 
+ /*
  var drag = false
     scene.onPointerDown = function(){
         drag = true
@@ -192,9 +200,9 @@ camRot = -4.69 - camera.alpha;
     scene.onPointerMove = function(){
         if(drag){
 	  	
-           socket.emit("rotation", {id: id, axis: camRot})
+           
         }
-    }
+    }*/
 
           
 socket.on('rotation', function(rot){
