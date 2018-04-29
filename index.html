@@ -157,7 +157,7 @@ b.setEnabled(false)
          socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed})
    
     })
-      balls[id].setEnabled(false);
+      balls[id].setEnabled(true);
    	
     
        
@@ -239,7 +239,7 @@ balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, posx.speed))
 socket.on('control', function(player){
   balls[player.id].setEnabled(true);
 	if(id == player.id){
-		balls[id].scaling.set(0, 0, 0)
+		//balls[id].scaling.set(0, 0, 0)
 	}
 balls[player.id].position.copyFrom(player.pos)
 balls[player.id].rotation.copyFrom(player.rot)
