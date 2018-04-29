@@ -159,7 +159,7 @@ b.setEnabled(false)
    
     })
       balls[id].setEnabled(true);
-   	balls[id].material.alpha = 0
+   
 	  
        
 
@@ -233,16 +233,13 @@ balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, posx.speed))
     cockpitwindow.visibility = 0.1
     cockpitwindow.position.z = 5
     cockpit.material.freeze()
-		
+		balls[id].scaling.x = 4
 		
               ///////////////////////////************************************************
           var pos = []
 socket.on('control', function(player){
   balls[player.id].setEnabled(true);
-	if(id != player.id){
-		balls[id].material.alpha = 0
-	}
-	
+
 balls[player.id].position.copyFrom(player.pos)
 balls[player.id].rotation.copyFrom(player.rot)
 })
