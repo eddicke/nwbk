@@ -97,11 +97,12 @@ sphere.position.y = 1;
 var balls = []
 var mat = new BABYLON.StandardMaterial("mat", scene)
 mat.diffuseColor = new BABYLON.Color3(Math.random()*2, Math.random()*2, Math.random()*2)
-sphere.material = mat
+
 
           var MAXROOM = 100
 for(var i = 0; i<MAXROOM; i++){
 var ball = sphere.createInstance("ball")
+ball.material = mat
 ball.position.z = 100*(i/4)
 balls.push(ball)
 }
