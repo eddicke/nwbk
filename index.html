@@ -217,8 +217,9 @@ balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, posx.speed))
 
 });
 //**************HIDE THE SPACESHIP**********************////
-		balls[id].visibility = .2
-          
+		if(id == id){
+		balls[id].visibility = .02
+		}
               ///////////////////////////************************************************
           var pos = []
 socket.on('control', function(player){
