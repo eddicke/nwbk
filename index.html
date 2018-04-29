@@ -133,22 +133,14 @@ b.setEnabled(false)
       socket.emit("rotation", {id: id, axis: balls[id].rotation})
 	    
     document.addEventListener("keydown", function(ev){
-	  speed = -.8
+	  
         if(ev.which == 32){
-            move = true
+            speed = -.8
 		
         }
-         if(ev.which == 40){
-            move = false
-		 
-        }
-	    
-        if(move){
-      
+ 
          socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed})
-		
-    }
-	   
+  
     })
 	    
 	    document.addEventListener("keyup", function(ev){
