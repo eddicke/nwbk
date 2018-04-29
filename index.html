@@ -71,7 +71,7 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
     
           // stars
   var stars = BABYLON.MeshBuilder.CreateBox("stars", {size: 8000, sideOrientation: BABYLON.Mesh.BACKSIDE}, scene);
-  var starMat = new BABYLON.CustomMaterial("stars", scene);
+  var starMat = new BABYLON.StandardMaterial("stars", scene);
   var urlStar = "http://jerome.bousquie.fr/BJS/images/stars1.jpg"
   var texStar = new BABYLON.Texture(urlStar, scene);
   texStar.uScale = 3;
