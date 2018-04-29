@@ -119,20 +119,20 @@ b.setEnabled(false)
   var move = false;
   var speed = 0
   socket.on('connect', function() {
-    var emp;
- socket.emit("bot", id)
+
  socket.emit("hunts", document.getElementById('chatContent').innerHTML)
+	  
     socket.on("hunts", function(me){
     usrs++
       console.log("there's a new user online");
       
    socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation})
       
-    socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed})
+   socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed})
 
-      socket.emit("rotation", {id: id, axis: balls[id].rotation})
+   socket.emit("rotation", {id: id, axis: balls[id].rotation})
 	    
-    document.addEventListener("keydown", function(ev){
+   document.addEventListener("keydown", function(ev){
 	  
         if(ev.which == 32){
             speed = -.8
@@ -149,8 +149,6 @@ b.setEnabled(false)
          socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed})
    
     })
-	    
-        //socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation})
       balls[id].setEnabled(true);
    
     
@@ -159,34 +157,8 @@ b.setEnabled(false)
      
       
       if(usrs == 2){
-          
-	/*	
-	  document.addEventListener("keydown", function(ev){
-	  
-        if(ev.which == 32){
-            move = true
-		
-        }
-         if(ev.which == 40){
-            move = false
-		 
-        }
-	    
-        if(move){
-      
-         socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed})
-		
-    }
-	   
-    })*/
-       // console.log("there was an old user online")
+
         socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation})
-        
-        socket.emit("player", {id: id, pos: balls[id].getAbsolutePosition()})
-      
-         socket.emit("posdata", balls[id].getAbsolutePosition())
-       
-        
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", "there was an old user online")
         
@@ -199,7 +171,7 @@ b.setEnabled(false)
 
 		
           
-           console.log("this is your workplace "+id)  
+console.log("this is your workplace "+id)  
 
  var camRot = 0
 scene.registerBeforeRender(function(){
@@ -211,32 +183,20 @@ camera.target.z = parseFloat(balls[id].position.z);
 socket.emit("rotation", {id: id, axis: camRot})
   
 })
-          
 
-    setInterval(function(){
-	    
-    }, 1000)
           
-		   socket.on('rotation', function(rot){
+socket.on('rotation', function(rot){
 		
 balls[rot.id].rotation.y = rot.axis;
 	
 });
 		
-            socket.on('newplayer', function(posx){
+socket.on('newplayer', function(posx){
 
-       balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, posx.speed))
+balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, posx.speed))
 
-  });
-          
-          socket.on("player", function(spawn){
-     
-       socket.on('control', function(player){
- 	//balls[player].position.set(spawn.pos);
-  
-})
-   
-     })
+});
+
           
               ///////////////////////////************************************************
           var pos = []
@@ -244,10 +204,6 @@ socket.on('control', function(player){
   balls[player.id].setEnabled(true);
 balls[player.id].position.copyFrom(player.pos)
 balls[player.id].rotation.copyFrom(player.rot)
-  //console.log(player.id+" is already online set at position")
- // pos.push(player.pos)
-  
-  
 })
           
   //*****************************************************************************************************
@@ -255,12 +211,10 @@ balls[player.id].rotation.copyFrom(player.rot)
   document.getElementById('chatContent').innerHTML = gme;
      })
 
-  //broadcast alert messages
+  //alert new player
    socket.on("broadcast", function(msg){
     console.log(msg);
- 
- 
-     })
+})
 
           
   // Update messages
