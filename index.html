@@ -239,7 +239,7 @@ balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, posx.speed))
 socket.on('control', function(player){
   balls[player.id].setEnabled(true);
 	if(id == player.id){
-		balls[id].scaling.set(1, 1, 1)
+		balls[id].material.alpha = 0
 	}
 balls[player.id].position.copyFrom(player.pos)
 balls[player.id].rotation.copyFrom(player.rot)
