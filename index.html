@@ -108,7 +108,8 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
        return this.player
             }
   
-           
+       //////////////****************INBUILT PLAYER MAX = 100*******************////////////////////////////////////////////////////  
+	   
 // Our built-in 'sphere' shape. Params: name, subdivs, size, scene
 var sphere = BABYLON.Mesh.CreateBox("sphere1", 3, scene);
 sphere.position.y = 1;
@@ -129,7 +130,60 @@ b.setEnabled(false)
 })
 sphere.dispose()
 
-          
+        /////**************************GUI****************************************************\\\\\\\\\\  
+		// GUI
+    var gui = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+    gui.idealWidth = 960;
+    gui.renderAtIdealSize = true;
+    var canvasX = gui._canvas.width * 0.5;
+    var canvasY = gui._canvas.height * 0.5;
+    var sightColor = "GreenYellow";
+    var sight = new BABYLON.GUI.Ellipse();
+    sight.width = "200px";
+    sight.height = sight.width;
+    sight.color = sightColor;
+    gui.addControl(sight);
+
+    var impact = new BABYLON.GUI.Ellipse();
+    impact.width = "500px";
+    impact.height = impact.width;
+    impact.color = "blue";
+    var frame = 420
+    scene.onPointerDown = function(){
+        console.log(frame)
+    }
+    setInterval(function(){
+        frame -= 20
+        
+    if(frame%20 == 0 && frame >= 198){
+       impact.width = frame
+        impact.height = frame
+    }
+    if(frame <= 198){
+        impact.color = "gold"
+    }
+    },100)
+    
+
+    gui.addControl(impact);
+
+    var line = new BABYLON.GUI.Line();
+    var lineWidth = 200.0;
+    line.x1 = canvasX - lineWidth;
+    line.y1 = canvasY;
+    line.x2 = canvasX + lineWidth;
+    line.y2 = canvasY;
+    line.dash = [6, 2];
+    line.color = sightColor;
+    sight.addControl(line);
+    var tail = new BABYLON.GUI.Line();
+    var tailSize = 20.0;
+    tail.x1 = canvasX;
+    tail.y1 = canvasY - tailSize * 0.66;
+    tail.x2 = canvasX;
+    tail.y2 = canvasY + tailSize * 0.33;
+    tail.color = sightColor;
+    sight.addControl(tail);
 
           //********************************************************************************THE SERVER-CLIENT SIDE
   socket = io();
