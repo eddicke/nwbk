@@ -174,7 +174,7 @@ b.setEnabled(false)
 console.log("this is your workplace "+id)  
 
  var camRot = 0
-scene.registerBeforeRender(function(){
+/*scene.registerBeforeRender(function(){
 
 
 camera.target.x = parseFloat(balls[id].position.x);		
@@ -182,7 +182,24 @@ camera.target.z = parseFloat(balls[id].position.z);
 	  camRot = -4.69 - camera.alpha;	
 socket.emit("rotation", {id: id, axis: camRot})
   
-})
+})*/
+ 
+ var drag = false
+    scene.onPointerDown = function(){
+        drag = true
+    }
+      scene.onPointerUp = function(){
+        drag = false
+    }
+    scene.onPointerMove = function(){
+        if(drag){
+		
+		camera.target.x = parseFloat(balls[id].position.x);		
+		camera.target.z = parseFloat(balls[id].position.z);
+	  	camRot = -4.69 - camera.alpha;
+           socket.emit("rotation", {id: id, axis: camRot})
+        }
+    }
 
           
 socket.on('rotation', function(rot){
