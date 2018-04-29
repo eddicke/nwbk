@@ -216,8 +216,22 @@ socket.on('newplayer', function(posx){
 balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, posx.speed))
 
 });
-//**************HIDE THE SPACESHIP**********************////
 		
+//**************SHOW THE COCKPIT**********************////
+	var mat = new BABYLON.StandardMaterial("texture3", scene);
+    mat.diffuseTexture = new BABYLON.Texture("https://raw.githubusercontent.com/eddicke/escort/master/Copperhead_cockpit.png", scene);
+    mat.diffuseTexture.hasAlpha = true;
+    // Our built-in 'ground' shape. Params: name, width, depth, subdivs, scene
+    var cockpit = BABYLON.Mesh.CreatePlane("pl", 5, scene)
+    cockpit.material = mat
+    cockpit.parent = camera
+    cockpit.position.z = 4
+
+    var cockpitwindow = BABYLON.Mesh.CreatePlane("pl", 5, scene)
+    cockpitwindow.parent = camera
+    cockpitwindow.visibility = 0.1
+    cockpitwindow.position.z = 5
+    cockpit.material.freeze()
 		
 		
               ///////////////////////////************************************************
@@ -225,7 +239,7 @@ balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, posx.speed))
 socket.on('control', function(player){
   balls[player.id].setEnabled(true);
 	if(id == player.id){
-		balls[id].scaling.y = 3
+		balls[id].scaling.set(0, 0, 0)
 	}
 balls[player.id].position.copyFrom(player.pos)
 balls[player.id].rotation.copyFrom(player.rot)
