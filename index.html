@@ -289,7 +289,7 @@ balls[rot.id].rotation.y = rot.axis;
 socket.on('newplayer', function(posx){
 
 balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, posx.speed))
-scene.getMeshByName(posx.pr).position.y = -posx.speed*.02
+scene.getMeshByName(posx.pr).position.y = -posx.speed*2
 });
 		
 //**************SHOW THE COCKPIT**********************////
