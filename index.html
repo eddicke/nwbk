@@ -318,28 +318,7 @@ scene.getMeshByName(posx.pr).scaling.y += -posx.speed*2
     balls[id].scaling.x = 4
 		
 		
-		
-		
-		function chkDuplicates(arr,justCheck){
-  var len = arr.length, tmp = {}, arrtmp = arr.slice(), dupes = [];
-  arrtmp.sort();
-  while(len--){
-   var val = arrtmp[len];
-   if (/nul|nan|infini/i.test(String(val))){
-     val = String(val);
-    }
-    if (tmp[JSON.stringify(val)]){
-       if (justCheck) {return true;}
-       dupes.push(val);
-    }
-    tmp[JSON.stringify(val)] = true;
-  }
-  return justCheck ? false : dupes.length ? dupes : null;
-}
-//console.log(chkDuplicates([1,2,3,4,5,1,2])); 
-var names = []
- 
-		
+
               ///////////////////////////************************************************
           var pos = []
 socket.on('control', function(player){
@@ -347,14 +326,6 @@ socket.on('control', function(player){
 balls[player.id].position.copyFrom(player.pos)
 balls[player.id].rotation.copyFrom(player.rot)
 	var player = new createPlayer(player.pr);
-	 for(var i = 0; i<scene.meshes.length; i++){
-      names.push(scene.meshes[i].name)
-      //console.log(chkDuplicates(scene.meshes[i].name));
-  }
-  console.log(chkDuplicates(names));
-  for(var k = 0; k<chkDuplicates(names).length; k++){
-      scene.getMeshByName(chkDuplicates(names)[k]).dispose()
-  }
 	
 })
           
