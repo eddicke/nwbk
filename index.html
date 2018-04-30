@@ -315,19 +315,11 @@ scene.getMeshByName(posx.pr).scaling.y += -posx.speed*2
     cockpitwindow.visibility = 0.1
     cockpitwindow.position.z = 5
     cockpit.material.freeze()
-		balls[id].scaling.x = 4
+    balls[id].scaling.x = 4
 		
-              ///////////////////////////************************************************
-          var pos = []
-socket.on('control', function(player){
-  balls[player.id].setEnabled(true);
-balls[player.id].position.copyFrom(player.pos)
-balls[player.id].rotation.copyFrom(player.rot)
-	var player = new createPlayer(player.pr);
-	
-	
-})
-          
+		
+		
+		
 		function chkDuplicates(arr,justCheck){
   var len = arr.length, tmp = {}, arrtmp = arr.slice(), dupes = [];
   arrtmp.sort();
@@ -346,7 +338,16 @@ balls[player.id].rotation.copyFrom(player.rot)
 }
 //console.log(chkDuplicates([1,2,3,4,5,1,2])); 
 var names = []
-  for(var i = 0; i<scene.meshes.length; i++){
+ 
+		
+              ///////////////////////////************************************************
+          var pos = []
+socket.on('control', function(player){
+  balls[player.id].setEnabled(true);
+balls[player.id].position.copyFrom(player.pos)
+balls[player.id].rotation.copyFrom(player.rot)
+	var player = new createPlayer(player.pr);
+	 for(var i = 0; i<scene.meshes.length; i++){
       names.push(scene.meshes[i].name)
       //console.log(chkDuplicates(scene.meshes[i].name));
   }
@@ -354,6 +355,9 @@ var names = []
   for(var k = 0; k<chkDuplicates(names).length; k++){
       scene.getMeshByName(chkDuplicates(names)[k]).dispose()
   }
+	
+})
+          
 		
 		
   //*****************************************************************************************************
