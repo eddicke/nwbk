@@ -212,7 +212,7 @@ sphere.dispose()
       
 	    
 	    
-   socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation, pr: username})
+   socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation, pr: username, pz: scene.getMeshByName(username).getAbsolutePosition()})
 	
    socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed, pr: username})
 
@@ -244,9 +244,7 @@ sphere.dispose()
       if(usrs == 2){
 	   
 	      
-    	socket.emit('bot', username);
- 
-      //  socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation, nr: username})
+        socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation, pr: username, pz: scene.getMeshByName(username).getAbsolutePosition()})
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", "there was an old user online")
         
@@ -331,7 +329,7 @@ socket.on('control', function(player){
 balls[player.id].position.copyFrom(player.pos)
 balls[player.id].rotation.copyFrom(player.rot)
 	var player = new createPlayer(player.pr);
-	
+	scene.getMeshByName(player.pr).position.copyFrom(player.pz)
 })
           
 		socket.on('bot', function(position){
