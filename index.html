@@ -242,8 +242,11 @@ sphere.dispose()
      
       
       if(usrs == 2){
-	
-        socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation, nr: username})
+	   
+	      
+    	socket.emit('bot', username);
+ 
+      //  socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation, nr: username})
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", "there was an old user online")
         
@@ -328,11 +331,12 @@ socket.on('control', function(player){
 balls[player.id].position.copyFrom(player.pos)
 balls[player.id].rotation.copyFrom(player.rot)
 	var player = new createPlayer(player.pr);
-	var player2 = new createPlayer(player.nr);
 	
 })
           
-		
+		socket.on('bot', function(position){
+		   var playerer = new createPlayer(position);
+		    });
 		
   //*****************************************************************************************************
    socket.on("ademola", function(gme){
