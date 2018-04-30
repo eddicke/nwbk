@@ -210,8 +210,8 @@ sphere.dispose()
     usrs++
       console.log("there's a new user online");
       
-   socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation, pr: username})
-      
+   //socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation, pr: username})
+      var player = new createPlayer(username)
    socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed})
 
    socket.emit("rotation", {id: id, axis: balls[id].rotation})
