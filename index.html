@@ -323,7 +323,13 @@ socket.on('control', function(player){
   balls[player.id].setEnabled(true);
 balls[player.id].position.copyFrom(player.pos)
 balls[player.id].rotation.copyFrom(player.rot)
-	var player = new createPlayer(player.pr)
+	var player = new createPlayer(player.pr);
+	
+	 scene.meshes.forEach(function(m){
+        if(m.name === m.name){
+            m.dispose()
+        }
+    })
 })
           
   //*****************************************************************************************************
