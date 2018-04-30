@@ -242,7 +242,7 @@ sphere.dispose()
      
       
       if(usrs == 2){
-	
+	var player = new createPlayer(username);
         socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation, pr: username})
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", "there was an old user online")
