@@ -278,7 +278,11 @@ socket.emit("rotation", {id: id, axis: camRot})
            
         }
     }*/
-
+    setTimeout(function(){
+      scene.meshes.forEach(function(m){
+        console.log(m.name)
+    })
+    }, 3000)
           
 socket.on('rotation', function(rot){
 		
