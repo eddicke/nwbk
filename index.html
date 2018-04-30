@@ -103,8 +103,11 @@ document.getElementById('chatContent').innerHTML = "welcome to the chat forum"
             // Our built-in 'ground' shape. Params: name, width, depth, subdivs, scene
             var ground = BABYLON.Mesh.CreateGround("ground1", 6, 6, 2, scene);
         
-           var Player = function(){
-       this.player = BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene);
+           var createPlayer = function(name){
+       this.player = BABYLON.Mesh.CreateSphere("sphere1", 16, 4, scene);
+		   this.player.position.x = Math.random()*5
+		   this.player.position.z = Math.random()*2
+       this.player.name = name
        return this.player
             }
   
@@ -207,7 +210,7 @@ sphere.dispose()
     usrs++
       console.log("there's a new user online");
       
-   socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation})
+   socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation, pr: username})
       
    socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed})
 
@@ -233,12 +236,12 @@ sphere.dispose()
       balls[id].setEnabled(true);
   	balls[id].material.alpha = 0
        
-
+	
      
       
       if(usrs == 2){
-
-        socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation})
+	
+        socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation, pr: username})
         socket.emit("ademola", document.getElementById('chatContent').innerHTML)
         socket.emit("broadcast", "there was an old user online")
         
@@ -312,6 +315,7 @@ socket.on('control', function(player){
   balls[player.id].setEnabled(true);
 balls[player.id].position.copyFrom(player.pos)
 balls[player.id].rotation.copyFrom(player.rot)
+	var player = new createPlayer(player.pr)
 })
           
   //*****************************************************************************************************
