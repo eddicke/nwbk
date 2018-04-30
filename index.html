@@ -210,9 +210,9 @@ sphere.dispose()
     usrs++
       console.log("there's a new user online");
       
-   //socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation, pr: username})
-      var player = new createPlayer(username)
-   socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed})
+   socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation, pr: username})
+	
+   socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed, pr: username})
 
    socket.emit("rotation", {id: id, axis: balls[id].rotation})
 	    
@@ -220,7 +220,7 @@ sphere.dispose()
 	  
         if(ev.which == 32){
             speed = -.8
-		socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed})
+		socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed, pr: username})
         }
  
          
@@ -289,7 +289,7 @@ balls[rot.id].rotation.y = rot.axis;
 socket.on('newplayer', function(posx){
 
 balls[posx.id].locallyTranslate(new BABYLON.Vector3(0, 0, posx.speed))
-
+scene.getMeshByName(posx.pr).position.y = -posx.speed*.02
 });
 		
 //**************SHOW THE COCKPIT**********************////
