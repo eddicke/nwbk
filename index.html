@@ -210,9 +210,9 @@ sphere.dispose()
     usrs++
       console.log("there's a new user online");
       
-	  //  var player = new createPlayer(username);
+	    var player = new createPlayer(username);
 	    
-   socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation, pr: username, name: username})
+  // socket.emit("control", {id: id, pos: balls[id].getAbsolutePosition(), rot: balls[id].rotation, pr: username, name: username})
 	
    socket.emit("newplayer", {id: id, pos: balls[id].getAbsolutePosition(), speed: speed, pr: username})
 
@@ -327,8 +327,9 @@ scene.getMeshByName(posx.pr).scaling.y += -posx.speed*2
 socket.on('control', function(player){
   balls[player.id].setEnabled(true);
 balls[player.id].position.copyFrom(player.pos)
-balls[player.id].rotation.copyFrom(player.rot)
-	var player = new createPlayer(player.pr);
+balls[player.id].rotation.copyFrom(player.rot);
+	
+	var player = new createPlayer(username);
 	
 })
           
