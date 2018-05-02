@@ -20,6 +20,9 @@ io.on('connection', function(socket) {
    // oldMsg.push('message received, sent by: ' + username + ', content: ' + message);
     io.emit('chat', username, message);
   });
+  setInterval(function() {
+  io.sockets.emit('message', 'hi!');
+}, 1000);
   
     socket.on('change', function(player, count) {
   //  console.log('message received, sent by: ' + username + ', content: ' + message);
