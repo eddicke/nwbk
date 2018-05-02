@@ -202,6 +202,11 @@ sphere.dispose()
   var players = [];
   var move = false;
   var speed = 0
+  
+  socket.on('message', function(data) {
+  console.log(data);
+});
+		
   socket.on('connect', function() {
 
  socket.emit("hunts", document.getElementById('chatContent').innerHTML)
